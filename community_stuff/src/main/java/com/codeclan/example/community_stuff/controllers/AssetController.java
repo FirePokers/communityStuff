@@ -16,7 +16,13 @@ public class AssetController {
     AssetRepository assetRepository;
 
     @GetMapping(value = "/assets")
-    public ResponseEntity<List<Asset>> getAllAssets() {
+    public ResponseEntity<List<Asset>> getAllAssets(
+            @RequestParam(name="tag", required = false) Long tag
+    ) {
+        if (tag != null)
+        {
+            return new ResponseEntity<List<Asset>>(assetRepository.findAssetsByTagsId(tag), HttpStatus.OK);
+        }
         return new ResponseEntity<List<Asset>>(assetRepository.findAll(), HttpStatus.OK);
     }
 
