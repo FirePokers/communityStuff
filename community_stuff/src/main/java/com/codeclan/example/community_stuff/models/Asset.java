@@ -40,12 +40,12 @@ public class Asset {
     public Asset() {
     }
 
-    public Asset(String name, String description, String imageUrl, String certificationDetail) {
+    public Asset(String name, String description, String imageUrl, String certificationDetail, ArrayList<Tag> tags) {
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
         this.certificationDetail = certificationDetail;
-        this.tags = new ArrayList<>();
+        this.tags = tags;
         this.bookings = new ArrayList<>();
     }
 

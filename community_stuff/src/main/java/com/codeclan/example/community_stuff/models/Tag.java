@@ -28,8 +28,7 @@ public class Tag {
     public Tag() {
     }
 
-    public Tag(Long id, String tagName) {
-        this.id = id;
+    public Tag(String tagName) {
         this.tagName = tagName;
         this.assets = new ArrayList<>();
     }

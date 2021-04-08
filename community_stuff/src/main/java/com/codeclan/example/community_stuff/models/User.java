@@ -29,8 +29,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String userName, int memberLevel, Date renewDate) {
-        this.id = id;
+    public User(String userName, int memberLevel, Date renewDate) {
         this.userName = userName;
         this.memberLevel = memberLevel;
         this.renewDate = renewDate;
