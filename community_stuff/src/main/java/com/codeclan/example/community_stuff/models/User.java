@@ -22,7 +22,7 @@ public class User {
     @Column(name="renew_date")
     private Date renewDate;
     @JsonIgnoreProperties({"user"})
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
 

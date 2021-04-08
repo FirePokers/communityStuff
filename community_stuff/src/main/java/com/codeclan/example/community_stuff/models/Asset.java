@@ -34,7 +34,7 @@ public class Asset {
     private List<Tag> tags;
 
     @JsonIgnoreProperties(value="asset")
-    @OneToMany(mappedBy = "asset", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "asset", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
     public Asset() {
