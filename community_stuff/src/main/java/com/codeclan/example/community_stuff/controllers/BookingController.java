@@ -16,7 +16,13 @@ public class BookingController {
     BookingRepository bookingRepository;
 
     @GetMapping(value = "/bookings")
-    public ResponseEntity<List<Booking>> getAllRaid() {
+    public ResponseEntity<List<Booking>> getAllRaid(
+            @RequestParam(name = "asset", required = false) Long asset
+    ) {
+        if(asset != null)
+        {
+            return new ResponseEntity<List<Booking>>(bookingRepository.findBookingsByAssetId(asset), HttpStatus.OK);
+        }
         return new ResponseEntity<List<Booking>>(bookingRepository.findAll(), HttpStatus.OK);
     }
 
