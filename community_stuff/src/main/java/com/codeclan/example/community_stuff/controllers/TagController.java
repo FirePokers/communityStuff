@@ -5,9 +5,7 @@ import com.codeclan.example.community_stuff.repositories.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,24 @@ public class TagController {
     @GetMapping(value="/tags/{id}")
     public ResponseEntity getTagById(@PathVariable Long id) {
         return new ResponseEntity<>(tagRepository.findById(id), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/tags")
+    public ResponseEntity<Tag> postTag(@RequestBody Tag tag){
+        tagRepository.save(tag);
+        return new ResponseEntity<>(tag, HttpStatus.CREATED);
+    }
+
+    @PatchMapping(value = "/tags/{id}")
+    public ResponseEntity<Tag> updateTag(@RequestBody Tag tag){
+        tagRepository.save(tag);
+        return new ResponseEntity<>(tag, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/tags/{id}")
+    public ResponseEntity<Tag> deleteTag(@PathVariable Long id) {
+        Tag found = tagRepository.getOne(id);
+        tagRepository.delete(found);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }

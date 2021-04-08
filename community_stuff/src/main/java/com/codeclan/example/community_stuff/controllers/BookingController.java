@@ -5,9 +5,7 @@ import com.codeclan.example.community_stuff.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +26,22 @@ public class BookingController {
         return new ResponseEntity<>(bookingRepository.findById(id), HttpStatus.OK);
     }
 
+    @PostMapping(value = "/bookings")
+    public ResponseEntity<Booking> postBooking(@RequestBody Booking booking){
+        bookingRepository.save(booking);
+        return new ResponseEntity<>(booking, HttpStatus.CREATED);
+    }
 
+    @PatchMapping(value = "/bookings/{id}")
+    public ResponseEntity<Booking> updateBooking(@RequestBody Booking booking){
+        bookingRepository.save(booking);
+        return new ResponseEntity<>(booking, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/bookings/{id}")
+    public ResponseEntity<Booking> deleteBooking(@PathVariable Long id) {
+        Booking found = bookingRepository.getOne(id);
+        bookingRepository.delete(found);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 }
