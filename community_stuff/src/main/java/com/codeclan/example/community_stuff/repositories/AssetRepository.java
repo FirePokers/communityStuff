@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface AssetRepository extends JpaRepository<Asset, Long> {
     List<Asset> findAssetsByTagsId(Long id);
+    List<Asset> findAssetsByBookingsUserId(Long id);
 }

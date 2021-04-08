@@ -17,12 +17,19 @@ public class AssetController {
 
     @GetMapping(value = "/assets")
     public ResponseEntity<List<Asset>> getAllAssets(
-            @RequestParam(name="tag", required = false) Long tag
+            @RequestParam(name="tag", required = false) Long tag,
+            @RequestParam(name="user", required = false) Long user
     ) {
         if (tag != null)
         {
             return new ResponseEntity<List<Asset>>(assetRepository.findAssetsByTagsId(tag), HttpStatus.OK);
         }
+
+        if (user != null)
+        {
+            return new ResponseEntity<List<Asset>>(assetRepository.findAssetsByBookingsUserId(user), HttpStatus.OK);
+        }
+
         return new ResponseEntity<List<Asset>>(assetRepository.findAll(), HttpStatus.OK);
     }
 
