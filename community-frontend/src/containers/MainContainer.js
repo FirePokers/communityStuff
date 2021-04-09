@@ -4,6 +4,7 @@ import Request from '../helpers/request';
 import Inventory from '../components/Inventory';
 import '../css/main.css';
 import '../css/panel.css';
+import '../css/animation.css';
 
 
 const MainContainer = () => {

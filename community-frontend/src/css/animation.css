@@ -1,0 +1,108 @@
+@keyframes from_right {
+    0% {
+        left: 100%;
+
+    }
+
+    100% {
+        left: 0%;
+
+    }
+}
+
+@keyframes from_left {
+    0% {
+        right: 100%;
+
+    }
+
+    100% {
+        right: 0%;
+
+    }
+}
+
+@keyframes from_bottom {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0%;
+    }
+}
+
+@keyframes from_top{
+    0% {
+        bottom: 100%;
+    }
+
+    100% {
+        bottom: 0%;
+    }
+}
+
+
+@keyframes dissolve_in{
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    50% {
+        visibility: visible;
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.in-from-right {
+    position: relative;
+    animation-name: from_right;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.in-from-left {
+    position: relative;
+    animation-name: from_left;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+.in-from-bottom{
+    position: relative;
+    animation-name: from_bottom;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.in-from-top{
+    position: relative;
+    animation-name: from_top;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.dissolve-appear{
+    animation-name: dissolve_in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.dissolve-appear2{
+    animation-name: dissolve_in;
+    animation-duration: 1.3s;
+    animation-fill-mode: forwards;
+}
+
+.dissolve-appear3{
+    animation-name: dissolve_in;
+    animation-duration: 1.6s;
+    animation-fill-mode: forwards;
+}
