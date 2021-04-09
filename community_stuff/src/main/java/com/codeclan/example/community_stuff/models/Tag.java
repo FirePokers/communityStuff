@@ -21,8 +21,8 @@ public class Tag {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "assets_tags",
-            joinColumns = {@JoinColumn(name  = "tag_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "asset_id", nullable = false, updatable = false)}
+            joinColumns = {@JoinColumn(name  = "tag_id", nullable = false, updatable = true)},
+            inverseJoinColumns = {@JoinColumn(name = "asset_id", nullable = false, updatable = true)}
     )
     private List<Asset> assets;
 
