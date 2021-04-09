@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+<<<<<<< HEAD
 }
 
 .user-form {
@@ -11,4 +12,16 @@
   border: 1px solid red;
   border: none;
   background-color: red;
+=======
+  display: flex;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0px;
+  z-index: 1;
+  background-color: #696969;
+  background-size: cover;
+>>>>>>> origin/feature/inventory
 }
