@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request';
 import UserForm from '../components/UserForm';
+import NavBar from '../components/NavBar';
+
+
 
 
 const MainContainer = () => {
@@ -14,7 +18,7 @@ const MainContainer = () => {
         
         const request = new Request();
         const userPromise = request.get('/api/users/1')
-        const assetPromise = request.get('.api/assets')
+        const assetPromise = request.get('/api/assets')
 
    Promise.all(
        [
@@ -43,17 +47,24 @@ const MainContainer = () => {
    }, []);
 
    return (
-       <div>
+       <Router>
+       
+        <NavBar/>
+
        <p>I am the maincontainer</p>
-       <UserForm onCreate={handlePost}/>
+       <Switch>
 
+       <Route exact path = "/users/new" render={(probs) =>{
+           return <UserForm onCreate={handlePost}/>
+       }}/>
+       
 
-       </div>
+        
+       </Switch>
+
+       </Router>
+
    ) 
-
-    
-   
-
 }
 
 export default MainContainer;
