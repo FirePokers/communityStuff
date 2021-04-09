@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import '../css/userform.css';
 
 const Userform = ({onCreate}) => {
 
@@ -37,7 +38,7 @@ const Userform = ({onCreate}) => {
             <input type="text" placeholder="Age" name="age" onChange={handleChange} value={stateUser.age} />
             <input type="email" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
 
-            <button type="submit">Create</button>
+            <button type="submit">Edit</button>
         </form>
        
         </div>

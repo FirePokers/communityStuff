@@ -23,12 +23,7 @@ const MainContainer = () => {
    )
    .then((data) => {setCurrentUser(data[0])});
    
-   return (
-       <div>
-        <h1>"I am the main container"</h1>
-       <UserForm/>
-       </div>
-   )
+   
         Promise.all([userPromise, assetPromise])
         .then((data) => {
             setCurrentUser(data[0]);
@@ -37,12 +32,23 @@ const MainContainer = () => {
 
    }
 
+   const handlePost = function(user){
+       const request = new Request();           //?
+       request.post("/api/users", user)
+       .then(() => window.location = "/users")
+   }
+
    useEffect(() => {
        requestAll();
    }, []);
 
    return (
+       <div>
        <p>I am the maincontainer</p>
+       <UserForm onCreate={handlePost}/>
+
+
+       </div>
    ) 
 
     
