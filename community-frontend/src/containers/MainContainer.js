@@ -13,7 +13,7 @@ const MainContainer = () => {
         
         const request = new Request();
         const userPromise = request.get('/api/users/1')
-        const assetPromise = request.get('.api/assets')
+        const assetPromise = request.get('/api/assets')
 
         Promise.all([userPromise, assetPromise])
         .then((data) => {
