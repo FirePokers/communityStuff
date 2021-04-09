@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
 
-const Userform = ({onCreate}) => {
-
+const Userform = (onCreate) => {              
     const [stateUser, setStateUser] = useState(
         {
         userName:"",
+        memberLevel:0,
+        renewDate: 1635499980,
         firstName: "",
         lastName: "",
         age: 0,
@@ -28,7 +29,7 @@ const Userform = ({onCreate}) => {
     }
 
     return (
-        <div classNmae="user-form">
+        <div className="user-form">
 
         <form onSubmit={handleSubmit}>
             <h2>User Form:</h2>

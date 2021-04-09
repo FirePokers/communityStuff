@@ -1,18 +1,5 @@
 .App {
   text-align: center;
-<<<<<<< HEAD
-}
-
-.user-form {
-  margin-top: 0;
-  margin-bottom: 0;
-  background: #75cff0;
-  color: white;
-  padding-left: 1em;
-  border: 1px solid red;
-  border: none;
-  background-color: red;
-=======
   display: flex;
   position: absolute;
   height: 100vh;
@@ -23,5 +10,4 @@
   z-index: 1;
   background-color: #696969;
   background-size: cover;
->>>>>>> origin/feature/inventory
 }
