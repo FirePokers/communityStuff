@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const Userform = () => {
+const Userform = ({onCreate}) => {
 
     const [stateUser, setStateUser] = useState(
         {
@@ -21,10 +21,15 @@ const Userform = () => {
         setStateUser(copiedUser)
     }
 
-    return (
-        <>
+    const handleSubmit = function(event){
+        event.preventDefualt();
+        onCreate(stateUser);
+    }
 
-        <form>
+    return (
+        <div classNmae="user-form">
+
+        <form onSubmit={handleSubmit}>
             <h2>User Form:</h2>
             <input type="text" placeholder="User Name" name="userName" onChange={handleChange} value={stateUser.userName} />
             <input type="text" placeholder="First Name" name="firstName" onChange={handleChange} value={stateUser.firstName} />
@@ -35,7 +40,7 @@ const Userform = () => {
             <button type="submit">Create</button>
         </form>
        
-        </>
+        </div>
        )
     }
 
