@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Request from '../helpers/request';
-import UserForm from '../components/UserForm';
-import NavBar from '../components/NavBar';
-
-
+import Inventory from '../components/Inventory';
+import '../css/main.css';
+import '../css/panel.css';
+import '../css/animation.css';
 
 
 const MainContainer = () => {
 
    const [currentUser, setCurrentUser] = useState(null);
    const [allAssets, setAllAssets] = useState(null);
+   const [allTags, setAllTags] = useState([]);
    const [filterTags, setFilterTags] = useState([]);
    const [chosenAsset, setChosenAsset] = useState(null);
 
@@ -19,19 +20,13 @@ const MainContainer = () => {
         const request = new Request();
         const userPromise = request.get('/api/users/1')
         const assetPromise = request.get('/api/assets')
+        const tagPromise = request.get('/api/tags')
 
-   Promise.all(
-       [
-           request.get('api/users/1')
-       ]
-   )
-   .then((data) => {setCurrentUser(data[0])});
-   
-   
-        Promise.all([userPromise, assetPromise])
+        Promise.all([userPromise, assetPromise, tagPromise])
         .then((data) => {
             setCurrentUser(data[0]);
             setAllAssets(data[1]);
+            setAllTags(data[2]);
         })
 
    }
@@ -47,23 +42,17 @@ const MainContainer = () => {
    }, []);
 
    return (
+
+    <div className="main-container">
        <Router>
-       
-        <NavBar/>
-
-       <p>I am the maincontainer</p>
-       <Switch>
-
-       <Route exact path = "/users/new" render={(probs) =>{
-           return <UserForm onCreate={handlePost}/>    
-       }}/>
-       
-
-        
-       </Switch>
-
+           {/* navbar in here */}
+           <Switch>
+               <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
+               <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
+           </Switch>
+           {/* or navbar in here */}
        </Router>
-
+    </div>
    ) 
 }
 
