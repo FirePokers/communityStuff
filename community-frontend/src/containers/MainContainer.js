@@ -11,10 +11,11 @@ import '../css/animation.css';
 const MainContainer = () => {
 
    const [currentUser, setCurrentUser] = useState(null);
-   const [allAssets, setAllAssets] = useState(null);
+   const [allAssets, setAllAssets] = useState([]);
    const [allTags, setAllTags] = useState([]);
    const [routeNodes, setRouteNodes] = useState(null);
    const [chosenAsset, setChosenAsset] = useState(null);
+   const [Dates, setDates] = useState([]);
 
    const requestAll = function(){
         
@@ -68,11 +69,7 @@ const MainContainer = () => {
     {
         return null;
     }
-
-
     
-   
-
 }
 
 export default MainContainer;

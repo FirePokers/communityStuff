@@ -1,0 +1,12 @@
+.asset-container > p {
+    color: white;
+}
+
+.asset-container {
+    align-items: right;
+}
+
+.booking-calendar-container {
+    align-items: right;
+    color: white;
+}

@@ -20,7 +20,6 @@ const AssetList = ({assets}) => {
         return null;
     }
 
-
 };
 
 export default AssetList;
