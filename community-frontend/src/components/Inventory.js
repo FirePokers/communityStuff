@@ -6,6 +6,7 @@ import '../css/inventory.css';
 const Inventory = ({allAssets, allTags}) => {
 
     const [assets, setAssets] = useState([]);
+    const [searchState, setSearchState] = useState("");
     const [filterTags, setFilterTags] = useState([]);
 
     useEffect(() => {
@@ -13,6 +14,33 @@ const Inventory = ({allAssets, allTags}) => {
     }, [allAssets])
 
 
+    const handleChange = (event) => {
+
+        const contents = event.target.value;
+        setSearchState(contents);
+
+       if (contents != "")
+       {
+           const newList = allAssets.filter((asset) => {
+
+               const assetTags = asset.tags.reduce((conCatTags, currentTag) => {
+                   return conCatTags + currentTag.tagName.toLowerCase();
+               }, "")
+
+                return asset.name.toLowerCase().includes(contents.toLowerCase()) || 
+                    asset.description.toLowerCase().includes(contents.toLowerCase()) ||
+                    assetTags.includes(contents.toLowerCase());
+                
+           });
+           setAssets([...newList]);
+       } 
+       else
+       {
+           setAssets(allAssets);
+       }
+
+
+    }
 
     return (
         <>
@@ -20,7 +48,7 @@ const Inventory = ({allAssets, allTags}) => {
                 <div className="inventory-searchbox panel in-from-right">
                     <form>
                     <i className="fas fa-search"></i>
-                        <input type="text" id="searchTerm" name="searchTerm" className="panel-text"/>
+                        <input type="text" id="searchTerm" name="searchTerm" className="panel-text" value={searchState} onChange={handleChange}/>
                     </form>
 
                 </div>

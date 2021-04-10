@@ -72,3 +72,12 @@
     margin: 0vh 3vh 0vh 3vh;
 }
 
+.inventory-asset-list {
+
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y:auto;
+}

@@ -10,7 +10,7 @@ const AssetList = ({assets}) => {
         });
 
     return (
-        <div className="dissolve-appear3">
+        <div className=" inventory-asset-list dissolve-appear3">
             {assetsNode}
         </div>
     );
