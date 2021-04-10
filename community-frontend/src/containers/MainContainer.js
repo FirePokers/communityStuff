@@ -42,7 +42,6 @@ const MainContainer = () => {
 
    const getRoutes = (assets) => {
         const newNodes = assets.map((asset, index) => {
-            console.log("asset to route:", asset);
             return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags}/>} />
         });
         return [...newNodes];

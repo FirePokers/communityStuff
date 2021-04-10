@@ -7,7 +7,7 @@ const Inventory = ({allAssets, allTags}) => {
 
     const [assets, setAssets] = useState([]);
     const [searchState, setSearchState] = useState("");
-    const [filterTags, setFilterTags] = useState([]);
+    const [filterTags, setFilterTags] = useState([allTags[2]]);
 
     useEffect(() => {
         setAssets(allAssets);
@@ -19,28 +19,44 @@ const Inventory = ({allAssets, allTags}) => {
         const contents = event.target.value;
         setSearchState(contents);
 
-       if (contents != "")
-       {
+   
            const newList = allAssets.filter((asset) => {
 
                const assetTags = asset.tags.reduce((conCatTags, currentTag) => {
                    return conCatTags + currentTag.tagName.toLowerCase();
                }, "")
 
-                return asset.name.toLowerCase().includes(contents.toLowerCase()) || 
+
+                return hasFilteredTags(asset.tags) && (contents === "" ? true : (asset.name.toLowerCase().includes(contents.toLowerCase()) || 
                     asset.description.toLowerCase().includes(contents.toLowerCase()) ||
-                    assetTags.includes(contents.toLowerCase());
+                    assetTags.includes(contents.toLowerCase())));
                 
            });
-           setAssets([...newList]);
-       } 
-       else
-       {
-           setAssets(allAssets);
-       }
 
+           setAssets([...newList]);
 
     }
+
+    function hasFilteredTags(assetTagList) {
+        // if(filterTags === [])
+        // {
+        //     return true;
+        // }
+        // else
+        // {
+            const namesFilter = filterTags.map((tag) => {
+                return tag.tagName;
+            });
+
+            const namesAsset = assetTagList.map((tag) => {
+                return tag.tagName;
+            });
+
+            return false;
+            // return namesFilter.some(nameTag => namesAsset.includes(nameTag));
+        // }
+    } 
+   
 
     return (
         <>
@@ -55,7 +71,7 @@ const Inventory = ({allAssets, allTags}) => {
             </div>
             <div className="inventory-centre-row">
                 <div className="inventory-leftpanel panel in-from-left">
-                    <h1>Side Panel Header</h1>
+                    <h1>Filter by Tag</h1>
 
                     <p>Some paragraph text goes in here</p>
 
