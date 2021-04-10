@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import AssetDetail from '../components/AssetDetail';
 import Request from '../helpers/request';
 
 
@@ -8,6 +9,7 @@ const MainContainer = () => {
    const [allAssets, setAllAssets] = useState(null);
    const [filterTags, setFilterTags] = useState([]);
    const [chosenAsset, setChosenAsset] = useState(null);
+   const [Dates, setDates] = useState([]);
 
    const requestAll = function(){
         
@@ -28,7 +30,9 @@ const MainContainer = () => {
    }, []);
 
    return (
-       <p>I am the maincontainer</p>
+       <div>I am the maincontainer;
+       <AssetDetail />
+       </div>
    ) 
 
     
