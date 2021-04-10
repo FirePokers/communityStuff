@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Request from '../helpers/request';
 import Inventory from '../components/Inventory';
-import AssetList from '../components/AssetList';
+import AssetItem from '../components/AssetItem';
 import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
@@ -11,7 +11,7 @@ import '../css/animation.css';
 const MainContainer = () => {
 
    const [currentUser, setCurrentUser] = useState(null);
-   const [allAssets, setAllAssets] = useState(null);
+   const [allAssets, setAllAssets] = useState([]);
    const [allTags, setAllTags] = useState([]);
    const [filterTags, setFilterTags] = useState([]);
    const [chosenAsset, setChosenAsset] = useState(null);
@@ -45,6 +45,7 @@ const MainContainer = () => {
            {/* navbar in here */}
            <Switch>
                <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
+               <Route path="/asset" render={() => <AssetItem asset={allAssets[0]} tags={allTags}/>}/>
            </Switch>
            {/* or navbar in here */}
        </Router>
