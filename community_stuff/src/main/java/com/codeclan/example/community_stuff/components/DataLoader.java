@@ -54,9 +54,9 @@ public class DataLoader implements ApplicationRunner {
         Asset postdriver1 = new Asset("Post Driver (mel)", "manual 25kg mel", "https://media.screwfix.com/is/image//ae235?src=ae235/9151V_P&$prodImageMedium$", "none", hammerTags);
         assetRepository.save(postdriver1);
 
-        Booking booking1 = new Booking( new Date(2021, 4, 8), new Date(2021, 4, 6), hammer1, user1);
+        Booking booking1 = new Booking( new Date("2021/04/06"), new Date("2021/04/08"), hammer1, user1);
         bookingRepository.save(booking1);
-        Booking booking2 = new Booking( new Date(1621085116), new Date(1621189516), postdriver1, user2);
+        Booking booking2 = new Booking( new Date("2021/04/06"), new Date("2021/04/08"), postdriver1, user2);
         bookingRepository.save(booking2);
 
 

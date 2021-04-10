@@ -7,12 +7,12 @@ import '../css/assetItem.css';
 
 const localizer = momentLocalizer(moment);
 
-const BookingCalendar = ({asset, tags}) => {
+const BookingCalendar = ({asset}) => {
 
     // const bookingEvents = ({asset}) => {
     //     const eventNodes = asset.bookings.map((booking) => {
-    //         return{
-    //             startDate: new Date(booking.startDate),
+    //         return {
+    //             startDate: new Date (booking.startDate),
     //             endDate: new Date(booking.endDate),
     //             title: "booking",
     //             allDay: true
@@ -24,8 +24,7 @@ const BookingCalendar = ({asset, tags}) => {
     //             {
     //                 startDate: "2021-04-08T17:24:48.316+00:00",
     //                 endDate: "2021-04-09T17:24:48.316+00:00",
-    //                 title: "booking",
-    //                 allDay: true
+    //                 id: "booking"
     //             }
     //         ]
 
@@ -37,6 +36,8 @@ const BookingCalendar = ({asset, tags}) => {
                 events={asset.bookings}
                 startAccessor="startDate"
                 endAccessor="endDate"
+                titleAccessor="id"
+                allDayAccessor='true'
                 style={{
                     height: 300,
                     width: 300
