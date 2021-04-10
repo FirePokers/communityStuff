@@ -45,3 +45,30 @@
     overflow-x: hidden;
     overflow-y:hidden;
 }
+
+.inventory-item {
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* height: 20vh;
+    width: 25vh; */
+    margin: 2vw;
+}
+
+.inventory-item:hover{
+
+    color:white;
+    text-decoration: none;
+    margin-bottom: 7px;
+}
+
+.inventory-image {
+
+    width: 17vh;
+    height: auto;
+    margin: 0vh 3vh 0vh 3vh;
+}
+

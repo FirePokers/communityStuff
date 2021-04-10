@@ -1,16 +1,24 @@
 import React from 'react';
+import InventoryItem from './InventoryItem';
 
-const AssetList = () => {
+const AssetList = ({assets}) => {
 
+    if(assets)
+    {
+        const assetsNode = assets.map((asset, index) => {
+            return <InventoryItem asset={asset} key={index}/>
+        });
 
     return (
-        <div className="inventory-leftpanel panel dissolve-appear3">
-            <h1>Tools appear here</h1>
-
-            <p>This will be multiple boxes containing different tools. They will take up the bulk of the page.</p>
-
+        <div className="dissolve-appear3">
+            {assetsNode}
         </div>
     );
+    }
+    else
+    {
+        return null;
+    }
 
 
 };

@@ -5,6 +5,13 @@ import '../css/inventory.css';
 
 const Inventory = ({allAssets, allTags}) => {
 
+    const [assets, setAssets] = useState([]);
+    const [filterTags, setFilterTags] = useState([]);
+
+    useEffect(() => {
+        setAssets(allAssets);
+    }, [allAssets])
+
 
 
     return (
@@ -25,7 +32,7 @@ const Inventory = ({allAssets, allTags}) => {
                     <p>Some paragraph text goes in here</p>
 
                 </div>
-               <AssetList /> 
+               <AssetList assets={assets}/> 
 
             </div>
         </>

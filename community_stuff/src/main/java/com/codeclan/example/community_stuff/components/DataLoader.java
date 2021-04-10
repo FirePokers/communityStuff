@@ -49,9 +49,9 @@ public class DataLoader implements ApplicationRunner {
         ArrayList<Tag> hammerTags = new ArrayList<Tag>();
         hammerTags.add(tag1);
         hammerTags.add(tag2);
-        Asset hammer1 = new Asset("Black & Decker Hammer", "round head hammer", "www.hammeringdown.com", "none", hammerTags);
+        Asset hammer1 = new Asset("Black & Decker Hammer", "round head hammer", "https://media.screwfix.com/is/image//ae235?src=ae235/2263F_P&$prodImageMedium$", "none", hammerTags);
         assetRepository.save(hammer1);
-        Asset postdriver1 = new Asset("Post Driver (mel)", "manual 25kg mel", "www.postdirveresRUs.com", "none", hammerTags);
+        Asset postdriver1 = new Asset("Post Driver (mel)", "manual 25kg mel", "https://media.screwfix.com/is/image//ae235?src=ae235/9151V_P&$prodImageMedium$", "none", hammerTags);
         assetRepository.save(postdriver1);
 
         Booking booking1 = new Booking( new Date(1617888316), new Date(1618061116), hammer1, user1);
