@@ -16,6 +16,8 @@ const AssetItem = ({asset, tags}) => {
       
             <h1>asset</h1>
             <p>name:{asset.name}</p>
+            <p>startDate{asset.bookings[0].startDate}</p>
+            <p>endDate{asset.bookings[0].endDate}</p>
             <Calendar asset={asset}/>
 
 
