@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Calendar, momentLocalizer} from 'react-big-calendar';
+import {Calendar, Views, momentLocalizer} from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
 import AssetItem from './AssetItem';
@@ -30,14 +30,17 @@ const BookingCalendar = ({asset}) => {
 
 
     return (
-        <div className='booking-calendar-container'>
+        <div className='booking-calendar-container panel'>
             <Calendar
                 localizer={localizer}
+                selectable={true}
+                views={['month', 'day', 'agenda']}
+                // onSelectSlot={(slotInfo) => this.onSlotChange(slotInfo)}
                 events={asset.bookings}
                 startAccessor="startDate"
                 endAccessor="endDate"
                 titleAccessor="id"
-                allDayAccessor='true'
+                allDayAccessor={true}
                 style={{
                     height: 300,
                     width: 300

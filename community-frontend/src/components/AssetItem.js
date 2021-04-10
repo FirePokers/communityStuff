@@ -2,6 +2,7 @@ import React from 'react';
 import Calendar from './Calendar';
 import AssetList from './AssetList';
 import '../css/assetItem.css'
+import '../css/panel.css'
 ;
 
 const AssetItem = ({asset, tags}) => {
@@ -11,14 +12,21 @@ const AssetItem = ({asset, tags}) => {
     }
 
 
+
+
     return (
         <div className='asset-container'>
-      
-            <h1>asset</h1>
-            <p>name:{asset.name}</p>
-            <p>startDate{asset.bookings[0].startDate}</p>
-            <p>endDate{asset.bookings[0].endDate}</p>
+            <div className="asset-text panel">
+                
+                <img src={asset.imageUrl} alt={asset.name} className="inventory-image"/>
+                <h3>{asset.name}</h3>
+                <p><strong>Description:</strong>{asset.description}</p>
+                <p><strong>Certification required:</strong>{" "} {asset.certificationDetail}</p>   
+
+            </div>
+
             <Calendar asset={asset}/>
+            
 
 
         </div>
