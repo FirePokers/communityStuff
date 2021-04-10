@@ -20,21 +20,21 @@ const BookingCalendar = ({asset, tags}) => {
     // })
     // }
 
-    const bookings = [
-                {
-                    startDate: "2021-04-08T17:24:48.316+00:00",
-                    endDate: "2021-04-09T17:24:48.316+00:00",
-                    title: "booking",
-                    allDay: true
-                }
-            ]
+    // const bookings = [
+    //             {
+    //                 startDate: "2021-04-08T17:24:48.316+00:00",
+    //                 endDate: "2021-04-09T17:24:48.316+00:00",
+    //                 title: "booking",
+    //                 allDay: true
+    //             }
+    //         ]
 
 
     return (
         <div className='booking-calendar-container'>
             <Calendar
                 localizer={localizer}
-                events={bookings}
+                events={asset.bookings}
                 startAccessor="startDate"
                 endAccessor="endDate"
                 style={{
