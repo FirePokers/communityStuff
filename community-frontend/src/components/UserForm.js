@@ -1,18 +1,15 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
 
-const Userform = (onCreate) => {              
+const Userform = ({onCreate}) => {              
     const [stateUser, setStateUser] = useState(
         {
         userName:"",
-        memberLevel:0,
-        renewDate: 1635499980,
         firstName: "",
         lastName: "",
-        age: 0,
         email: "",
-        memberLevel: 0,
-        credits: 1
+        memberLevel: 0
+        // credits: 1
         }
     )
 
@@ -36,7 +33,6 @@ const Userform = (onCreate) => {
             <input type="text" placeholder="User Name" name="userName" onChange={handleChange} value={stateUser.userName} />
             <input type="text" placeholder="First Name" name="firstName" onChange={handleChange} value={stateUser.firstName} />
             <input type="text" placeholder="Last Name" name="lastName" onChange={handleChange} value={stateUser.lastName} />
-            <input type="text" placeholder="Age" name="age" onChange={handleChange} value={stateUser.age} />
             <input type="email" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
 
             <button type="submit">Edit</button>
