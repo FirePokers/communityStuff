@@ -1,35 +1,38 @@
-import React, {Component} from 'react';
-import BigCalendar from 'react-big-calendar';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import moment from 'moment';
+// import React, {Component} from 'react';
+// import {Calendar, momentLocalizer} from 'react-big-calendar';
+// import 'react-big-calendar/lib/css/react-big-calendar.css';
+// import moment from 'moment';
+// import Asset from './components/Asset'
 
-export default class BookingCalendar extends Component{
+// const localizer = momentLocalizer(moment);
 
-    localizer = BigCalendar.momentLocalizer(moment);
+// const BookingCalendar = () => {
 
-    setDates = () => {
-        const events = []
-        this.props.events.map(event => {
-            return events.push({
-                startDate: new Date(event.start),
-                endDate: new Date(event.end),
-                title: "booking",
-                allDay: true
-            })
-        })
-        return events
-    }
+//     const bookingEvents = ({asset}) => {
+//         const events = []
+//         const eventNodes = asset.bookings.map((booking) => {
+//             return events.push({
+//                 startDate: new Date(booking.startDate),
+//                 endDate: new Date(booking.endDate),
+//                 title: "booking",
+//                 allDay: true
+//             })
+//         })
+//         return events
+//     }
 
 
-    return (
-        <div className='booking-calendar-container'>
-            <BookingCalendar
-                localizer={localizer}
-                events={this.setDates()}
-                startAccessor='start'
-                endAccessor='end' />
-        </div>
-    )
-}
- 
-export default BigCalendar;
+//         return (
+//         <div className='booking-calendar-container'>
+//             <Calendar
+//                 localizer={localizer}
+//                 events={bookingEvents()}
+//                 startAccessor="start"
+//                 endAccessor="end"
+//                 style={{height: 500}}
+//             />
+//         </div>
+//         )
+//     }
+
+// export default BookingCalendar;

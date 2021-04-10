@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
-// import Asset from "./Assets";
-import BookingCalendar from './Calendar';
+// import React, {Component} from 'react';
+// // import Asset from "./Assets";
+// import BookingCalendar from './Calendar';
 
 
-const AssetDetail = ({Asset}) => {
+// const AssetDetail = ({Asset}) => {
    
 
-    return(
-        <div className="asset-detail">
-        <p>This is our Asset Detail Page</p>
-        <BookingCalendar />
-        </div>
-    )
+//     return(
+//         <div className="asset-detail">
+//         <p>This is our Asset Detail Page</p>
+//         <BookingCalendar />
+//         </div>
+//     )
 
-}
+// }
 
-export default AssetDetail;
+// export default AssetDetail;

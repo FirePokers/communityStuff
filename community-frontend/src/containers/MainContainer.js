@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Request from '../helpers/request';
 import Inventory from '../components/Inventory';
+import AssetList from '../components/AssetList';
 import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
@@ -40,9 +41,11 @@ const MainContainer = () => {
 
     <div className="main-container">
        <Router>
+           
            {/* navbar in here */}
            <Switch>
                <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
+               <Route path="/assets" render={() => <AssetList />}/>
            </Switch>
            {/* or navbar in here */}
        </Router>
