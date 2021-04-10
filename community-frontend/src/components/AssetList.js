@@ -5,6 +5,10 @@ import AssetItem from './AssetItem';
 
 const AssetList = ({assets}, {tags}) => {
 
+    if(!assets){
+        return (<p>Loading...</p>)
+    }
+
 
     const assetNodes = assets.map((asset, index) => {
         return (
