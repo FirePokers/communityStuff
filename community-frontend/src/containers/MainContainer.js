@@ -39,9 +39,11 @@ const MainContainer = () => {
 
     <div className="main-container">
        <Router>
+           {/* navbar in here */}
            <Switch>
                <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
            </Switch>
+           {/* or navbar in here */}
        </Router>
     </div>
    ) 
