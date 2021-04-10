@@ -1,0 +1,47 @@
+.inventory-leftpanel {
+
+    width: 20vw;
+    min-width: 20vw;
+    height: 60vh;
+    min-height: 40vh;
+    margin: 10vh;
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.inventory-top-row {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    min-width: 100vw;
+}
+
+.inventory-searchbox {
+
+    min-width: 10vw;
+    height: 5vh;
+    min-height: 3vh;
+    margin: 5vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    justify-content: center;
+}
+
+.inventory-centre-row {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y:hidden;
+}

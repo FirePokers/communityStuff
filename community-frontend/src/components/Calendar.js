@@ -21,7 +21,7 @@ export default class BookingCalendar extends Component{
     }
 
 
-    return(
+    return (
         <div className='booking-calendar-container'>
             <BookingCalendar
                 localizer={localizer}
@@ -31,5 +31,5 @@ export default class BookingCalendar extends Component{
         </div>
     )
 }
-
+ 
 export default BigCalendar;

@@ -1,0 +1,16 @@
+.panel {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(7px);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 25px;
+
+    color: black;
+}
+
+.panel-text {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 4px;
+    height: 1.3em;
+    margin: 5px;
+}
