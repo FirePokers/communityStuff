@@ -21,12 +21,12 @@ const Userform = ({onCreate}) => {
     }
 
     const handleSubmit = function(event){
-        event.preventDefualt();
+        event.preventDefault();
         onCreate(stateUser);
     }
 
     return (
-        <div className="user-form">
+        <div className="user-form panel in-from-top">
 
         <form onSubmit={handleSubmit}>
             <h2>User Form:</h2>
@@ -35,7 +35,7 @@ const Userform = ({onCreate}) => {
             <input type="text" placeholder="Last Name" name="lastName" onChange={handleChange} value={stateUser.lastName} />
             <input type="email" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
 
-            <button type="submit">Edit</button>
+            <button type="submit">Create User</button>
         </form>
        
         </div>

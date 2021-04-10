@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Request from '../helpers/request';
 import Inventory from '../components/Inventory';
+import UserForm from "../components/UserForm";
+import EditForm from "../components/EditForm";
 import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
@@ -32,11 +34,18 @@ const MainContainer = () => {
    }
 
    const handlePost = function(user){
-       const request = new Request();           //?
+       console.log("new user", user);
+       const request = new Request();          
        request.post("/api/users", user)
        .then(() => window.location = "/users")
    }
 
+   const handleEdit = function(user){
+       console.log("edit user", user);
+       const request = new Request();           
+       request.patch("/api/users", user)
+       .then(() => window.location = "/users")
+   }
    useEffect(() => {
        requestAll();
    }, []);
@@ -48,7 +57,10 @@ const MainContainer = () => {
            {/* navbar in here */}
            <Switch>
                <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
+               
                <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
+
+               <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit}/>}}/>
            </Switch>
            {/* or navbar in here */}
        </Router>

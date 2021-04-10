@@ -2,7 +2,7 @@ import React from 'react';
 
 const NavBar = (props) => {
     return (
-        <header>
+        <header className="inventory-top-row">
             <img src='/logo192.png' alt="Logo"/>
 
             <ul>
