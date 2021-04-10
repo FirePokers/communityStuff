@@ -38,12 +38,12 @@ const Inventory = ({allAssets, allTags}) => {
     }
 
     function hasFilteredTags(assetTagList) {
-        // if(filterTags === [])
-        // {
-        //     return true;
-        // }
-        // else
-        // {
+        if(filterTags === [])
+        {
+            return true;
+        }
+        else
+        {
             const namesFilter = filterTags.map((tag) => {
                 return tag.tagName;
             });
@@ -52,9 +52,8 @@ const Inventory = ({allAssets, allTags}) => {
                 return tag.tagName;
             });
 
-            return false;
-            // return namesFilter.some(nameTag => namesAsset.includes(nameTag));
-        // }
+            return namesFilter.some(nameTag => namesAsset.includes(nameTag));
+        }
     } 
    
 
