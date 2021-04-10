@@ -25,7 +25,7 @@ const Inventory = ({allAssets, allTags}) => {
                     <p>Some paragraph text goes in here</p>
 
                 </div>
-               <AssetList /> 
+               <AssetList assets={allAssets} tags={allTags}/> 
 
             </div>
         </>

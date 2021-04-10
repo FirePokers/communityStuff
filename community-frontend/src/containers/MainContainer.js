@@ -45,7 +45,6 @@ const MainContainer = () => {
            {/* navbar in here */}
            <Switch>
                <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
-               <Route path="/assets" render={() => <AssetList />}/>
            </Switch>
            {/* or navbar in here */}
        </Router>
