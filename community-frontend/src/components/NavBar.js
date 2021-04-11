@@ -15,8 +15,10 @@ const NavBar = () => {
             <nav className="navbar panel in-from-top">
                 <Link to="/inventory">Our Inventory</Link>
             
+                <span className="navbar-right-cluster">
                 <Link to="/">Log in</Link>
                 <Link to="/users/new">Register</Link>
+                </span>
                 
             </nav>
       
