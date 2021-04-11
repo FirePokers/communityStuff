@@ -5,6 +5,7 @@ import Inventory from '../components/Inventory';
 import UserForm from "../components/UserForm";
 import EditForm from "../components/EditForm";
 import AssetItem from '../components/AssetItem';
+import NavBar from '../components/NavBar';
 import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
@@ -78,7 +79,7 @@ const MainContainer = () => {
 
             <div className="main-container">
             <Router>
-            {/* navbar in here */}
+                <NavBar />
                 <Switch>
                 <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
 

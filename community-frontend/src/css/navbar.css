@@ -1,0 +1,16 @@
+.navbar-container {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+
+    height: 10vh;
+    width: 60vw;
+    margin: 5vh;
+
+}

@@ -135,6 +135,9 @@ const Inventory = ({allAssets, allTags}) => {
     return (
         <>
             <div className="inventory-top-row">
+            </div>
+            <div className="inventory-centre-row">
+                <div className="inventory-left-container">
                 <div className="inventory-searchbox panel in-from-right">
                     <form>
                     <i className="fas fa-search"></i>
@@ -142,8 +145,6 @@ const Inventory = ({allAssets, allTags}) => {
                     </form>
 
                 </div>
-            </div>
-            <div className="inventory-centre-row">
                 <div className="inventory-leftpanel panel in-from-left">
                     <h1>Filter by Tag</h1>
 
@@ -158,6 +159,7 @@ const Inventory = ({allAssets, allTags}) => {
                         {tagLabels}
                     </div>
                     
+                </div>
                 </div>
                <AssetList assets={assets}/> 
 

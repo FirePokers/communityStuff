@@ -1,19 +1,25 @@
 import React from 'react';
+import {Link, useLocation} from 'react-router-dom';
+import '../css/navbar.css';
 
-const NavBar = (props) => {
+const NavBar = () => {
+
+    const location = useLocation();
+
+    console.log("current route:", location);
+
     return (
-        <header className="inventory-top-row">
+        <header className="navbar-container">
             <img src='/logo192.png' alt="Logo"/>
 
-            <ul>
-                <li className="navLink">
-                    <a href="/users">Users</a>
-                </li>
-                <li className="navLink">
-                    <a href="/users/new">Create User</a>
-                </li>
-
-            </ul>
+            <nav className="navbar panel in-from-top">
+                <Link to="/inventory">Our Inventory</Link>
+            
+                <Link to="/">Log in</Link>
+                <Link to="/users/new">Register</Link>
+                
+            </nav>
+      
         </header>
 
     )
