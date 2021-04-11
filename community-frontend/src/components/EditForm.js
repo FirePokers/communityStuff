@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
 
-const Editform = ({user, onEdit}) => {              
+const Editform = ({user, onEdit, onDelete}) => {              
     const [stateUser, setStateUser] = useState(user);
 
 
+    const handleDelete = () => {
+        onDelete(stateUser)             // id<<<???
+    }
+    
     const handleChange = function(event){
         let propertyName = event.target.name;
         let copiedUser = {...stateUser}
@@ -44,6 +48,8 @@ const Editform = ({user, onEdit}) => {
                 <input type="email" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
 
                 <button type="submit">Edit</button>
+
+                <button type="button" onClick={handleDelete} >Delete Account </button>
             </form>
         
             </div>

@@ -37,6 +37,14 @@ const MainContainer = () => {
 
    }
 
+   const handleDelete = function(user){
+       const request = new Request();
+       const url = (`/api/users/${user.id}`)
+       request.delete(url)
+       .then(() => window.location = "/users")
+       
+   }
+
    const handlePost = function(user){
        console.log("new user", user);
        const request = new Request();          
@@ -84,7 +92,7 @@ const MainContainer = () => {
 
                 <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
 
-               <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit}/>}}/>
+               <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
 
                 {routeNodes}
                </Switch>
