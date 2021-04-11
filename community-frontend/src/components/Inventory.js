@@ -13,15 +13,24 @@ const Inventory = ({allAssets, allTags}) => {
         setAssets(allAssets);
     }, [allAssets])
 
+    useEffect(() => {
+        setFilterTags(allTags);
+    }, [allTags])
+
+    useEffect(() => {
+        filterAssets(searchState)
+    },[filterTags]);
+
 
     const handleChange = (event) => {
 
         const contents = event.target.value;
         setSearchState(contents);
+        filterAssets(contents);
+    }
 
-        if(contents != "")
-        {
-   
+    const filterAssets = (contents) => {
+
            const newList = allAssets.filter((asset) => {
 
                const assetTags = asset.tags.reduce((conCatTags, currentTag) => {
@@ -29,28 +38,22 @@ const Inventory = ({allAssets, allTags}) => {
                }, "")
 
 
-                return asset.name.toLowerCase().includes(contents.toLowerCase()) || 
+                return hasFilteredTags(asset.tags) && (asset.name.toLowerCase().includes(contents.toLowerCase()) || 
                     asset.description.toLowerCase().includes(contents.toLowerCase()) ||
-                    assetTags.includes(contents.toLowerCase());
+                    assetTags.includes(contents.toLowerCase()));
                 
            });
 
            setAssets([...newList]);
-        }
-        else
-        {
-            setAssets(allAssets);
-        }
+        
+
 
     }
 
+
+
     function hasFilteredTags(assetTagList) {
-        if(filterTags === [])
-        {
-            return true;
-        }
-        else
-        {
+  
             const namesFilter = filterTags.map((tag) => {
                 return tag.tagName;
             });
@@ -60,9 +63,39 @@ const Inventory = ({allAssets, allTags}) => {
             });
 
             return namesFilter.some(nameTag => namesAsset.includes(nameTag));
-        }
+    //         const result = namesFilter.some(nameTag => namesAsset.includes(nameTag));
+    //         console.log("has passed tagtest:", result);
+    //         return result;
     } 
-   
+
+    const handleTag = (event) => {
+        if(event.target.value === "searchAll")
+        {
+            setFilterTags(allTags);
+        }
+        else
+        {
+            const newTag = allTags[event.target.value];
+
+            if(filterTags.length === allTags.length)
+            {
+                setFilterTags([...[newTag]]);
+            }
+            else
+            {
+                let copiedList = [...filterTags];
+                copiedList.push(newTag);
+                setFilterTags(copiedList);
+            }
+            
+        }
+    }
+
+    const tagOptions = allTags.map((tag, index) => {
+
+        return <option key={index} value={index}>{tag.tagName}</option>
+    })
+
 
     return (
         <>
@@ -79,8 +112,13 @@ const Inventory = ({allAssets, allTags}) => {
                 <div className="inventory-leftpanel panel in-from-left">
                     <h1>Filter by Tag</h1>
 
-                    <p>Some paragraph text goes in here</p>
-
+                    <form>
+                        <select name="tagsSelect" onChange={handleTag} defaultValue="select-tag">
+                            <option value='searchAll'>Search All Tags</option>
+                            {tagOptions}
+                        </select>
+                    </form>
+                    
                 </div>
                <AssetList assets={assets}/> 
 
