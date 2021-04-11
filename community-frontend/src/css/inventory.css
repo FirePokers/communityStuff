@@ -93,7 +93,21 @@
     overflow-y:auto;
 }
 
+.inventory-tag-container {
+
+    margin: 2vh;
+    display: flex;
+    flex-direction: row;
+    /* align-items: flex-start; */
+    flex-wrap: wrap;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y:auto;
+}
 .inventory-tag-label {
 
-    background-color: slateblue;
+    height: 1.5em; 
+    padding: 3px;
+    margin: 1vh;
+    border-radius: 3px;
 }
