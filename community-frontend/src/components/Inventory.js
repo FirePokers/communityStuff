@@ -7,7 +7,7 @@ const Inventory = ({allAssets, allTags}) => {
 
     const [assets, setAssets] = useState([]);
     const [searchState, setSearchState] = useState("");
-    const [filterTags, setFilterTags] = useState([allTags[2]]);
+    const [filterTags, setFilterTags] = useState([]);
 
     useEffect(() => {
         setAssets(allAssets);
@@ -19,6 +19,8 @@ const Inventory = ({allAssets, allTags}) => {
         const contents = event.target.value;
         setSearchState(contents);
 
+        if(contents != "")
+        {
    
            const newList = allAssets.filter((asset) => {
 
@@ -27,13 +29,18 @@ const Inventory = ({allAssets, allTags}) => {
                }, "")
 
 
-                return hasFilteredTags(asset.tags) && (contents === "" ? true : (asset.name.toLowerCase().includes(contents.toLowerCase()) || 
+                return asset.name.toLowerCase().includes(contents.toLowerCase()) || 
                     asset.description.toLowerCase().includes(contents.toLowerCase()) ||
-                    assetTags.includes(contents.toLowerCase())));
+                    assetTags.includes(contents.toLowerCase());
                 
            });
 
            setAssets([...newList]);
+        }
+        else
+        {
+            setAssets(allAssets);
+        }
 
     }
 
