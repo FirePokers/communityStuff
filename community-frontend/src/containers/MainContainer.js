@@ -4,6 +4,7 @@ import Request from '../helpers/request';
 import Inventory from '../components/Inventory';
 import UserForm from "../components/UserForm";
 import EditForm from "../components/EditForm";
+import AssetItem from '../components/AssetItem';
 import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
@@ -12,10 +13,11 @@ import '../css/animation.css';
 const MainContainer = () => {
 
    const [currentUser, setCurrentUser] = useState(null);
-   const [allAssets, setAllAssets] = useState(null);
+   const [allAssets, setAllAssets] = useState([]);
    const [allTags, setAllTags] = useState([]);
-   const [filterTags, setFilterTags] = useState([]);
+   const [routeNodes, setRouteNodes] = useState(null);
    const [chosenAsset, setChosenAsset] = useState(null);
+   const [Dates, setDates] = useState([]);
 
    const requestAll = function(){
         
@@ -29,7 +31,9 @@ const MainContainer = () => {
             setCurrentUser(data[0]);
             setAllAssets(data[1]);
             setAllTags(data[2]);
+            setRouteNodes(getRoutes(data[1]));
         })
+        
 
    }
 
@@ -58,22 +62,43 @@ const MainContainer = () => {
        requestAll();
    }, []);
 
-   return (
 
-    <div className="main-container">
-       <Router>
-           {/* navbar in here */}
-           <Switch>
-               <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
-               
-               <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
+    
+   const getRoutes = (assets) => {
+        const newNodes = assets.map((asset, index) => {
+            console.log("asset to route:", asset);
+            return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags}/>} />
+        });
+        return [...newNodes];
+   };
+
+
+   if(routeNodes)
+   {
+        return (
+
+            <div className="main-container">
+            <Router>
+            {/* navbar in here */}
+                <Switch>
+                <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
+
+                <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
 
                <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit}/>}}/>
-           </Switch>
-           {/* or navbar in here */}
-       </Router>
-    </div>
-   ) 
+
+                {routeNodes}
+               </Switch>
+               {/* or navbar in here */}
+            </Router>
+            </div>
+        );
+    }
+    else
+    {
+        return null;
+    }
+    
 }
 
 export default MainContainer;

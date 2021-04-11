@@ -1,0 +1,26 @@
+.asset-container > p {
+    color: white;
+}
+
+.asset-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.asset-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.asset-text > img {
+    padding: 5px;
+}
+
+
+.booking-calendar-container {
+    align-items: right;
+    color: white;
+}

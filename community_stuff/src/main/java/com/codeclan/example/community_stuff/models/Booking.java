@@ -1,5 +1,6 @@
 package com.codeclan.example.community_stuff.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -14,8 +15,10 @@ public class Booking {
     private Long id;
 
     @Column(name="start_date")
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date startDate;
     @Column(name="end_date")
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date endDate;
 
     @JsonIgnoreProperties({"bookings"})
