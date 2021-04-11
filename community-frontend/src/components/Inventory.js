@@ -80,15 +80,31 @@ const Inventory = ({allAssets, allTags}) => {
             }
             else
             {
-                let copiedList = [...filterTags];
-                copiedList.push(newTag);
-                setFilterTags(copiedList);
+                if(!filterTags.includes(newTag))
+                {
+                    let copiedList = [...filterTags];
+                    copiedList.push(newTag);
+                    setFilterTags(copiedList);
+                }
             }
             
         }
     };
 
     const handleTagDelete = (tag) => {
+
+        if (filterTags.length === 1)
+        {
+            setFilterTags(allTags);
+        }
+        else
+        {
+            let newList = [...filterTags];
+            const index = newList.indexOf(tag);
+
+            newList.splice(index, 1);
+            setFilterTags(newList);
+        } 
 
         console.log("tag deleted:", tag);
     }
