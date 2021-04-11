@@ -8,7 +8,7 @@ const TagLabel = ({tag, onTagRemove}) => {
     }
 
     return (
-        <div className="inventory-tag-label" onClick={handleClick}>
+        <div className="inventory-tag-label cool-appear1 dissolve-appear" onClick={handleClick}>
             {tag.tagName} <i className="far fa-window-close"></i>
         </div>
 

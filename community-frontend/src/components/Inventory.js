@@ -148,7 +148,7 @@ const Inventory = ({allAssets, allTags}) => {
                     <h1>Filter by Tag</h1>
 
                     <form>
-                        <select name="tagsSelect" onChange={handleTag} defaultValue="select-tag">
+                        <select name="tagsSelect" onChange={handleTag} defaultValue="select-tag" className="panel-dropdown">
                             <option value='searchAll'>Search All Tags</option>
                             {tagOptions}
                         </select>

@@ -1,7 +1,7 @@
 .inventory-leftpanel {
 
-    width: 20vw;
-    min-width: 20vw;
+    width: 15vw;
+    min-width: 15vw;
     height: 60vh;
     min-height: 40vh;
     margin: 10vh;
@@ -77,6 +77,7 @@
 
 .inventory-image {
 
+    border-radius: 5%;
     width: 17vh;
     height: auto;
     margin: 1vh 3vh 3vh 3vh;
