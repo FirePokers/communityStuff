@@ -53,23 +53,33 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    /* height: 20vh;
-    width: 25vh; */
     margin: 2vw;
+    padding: 7px;
+    text-decoration: none;
 }
 
 .inventory-item:hover{
 
-    color:white;
+    color: black;
     text-decoration: none;
-    margin-bottom: 7px;
+    margin-top: 7px;
+}
+
+.inventory-asset-list a {
+
+    text-decoration: none;
+}
+
+.inventory-item-title {
+    font-weight: 700;
+    font-size: large;
 }
 
 .inventory-image {
 
     width: 17vh;
     height: auto;
-    margin: 0vh 3vh 0vh 3vh;
+    margin: 1vh 3vh 3vh 3vh;
 }
 
 .inventory-asset-list {
