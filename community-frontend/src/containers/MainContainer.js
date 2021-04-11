@@ -37,14 +37,14 @@ const MainContainer = () => {
        console.log("new user", user);
        const request = new Request();          
        request.post("/api/users", user)
-       .then(() => window.location = "/users")
+       .then(() => window.location = "/users/")
    }
 
    const handleEdit = function(user){
        console.log("edit user", user);
        const request = new Request();           
        request.patch("/api/users", user)
-       .then(() => window.location = "/users")
+       .then(() => window.location = "/users/")
    }
    useEffect(() => {
        requestAll();

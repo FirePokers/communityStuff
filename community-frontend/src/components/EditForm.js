@@ -4,9 +4,6 @@ import '../css/userform.css';
 const Editform = ({user, onEdit}) => {              
     const [stateUser, setStateUser] = useState(user);
 
-    // if (user){
-    //     setStateUser(user);
-    // }
 
     const handleChange = function(event){
         let propertyName = event.target.name;
@@ -17,8 +14,12 @@ const Editform = ({user, onEdit}) => {
 
     const handleSubmit = function(event){
         event.preventDefault();
-        onEdit(stateUser);
-    }
+        if(stateUser.id){
+        onEdit(stateUser)
+        } 
+            
+        }
+    
 
     useEffect(()=>{
         if(user){
@@ -33,7 +34,7 @@ const Editform = ({user, onEdit}) => {
             <div className="edit-form panel in-from-top">
 
             <form onSubmit={handleSubmit}>
-                <h2>User Form:</h2>
+                <h2>Edit Form:</h2>
                 <input type="text" placeholder="User Name" name="userName" onChange={handleChange} value={stateUser.userName} />
                 <input type="text" placeholder="First Name" name="firstName" onChange={handleChange} value={stateUser.firstName} />
                 <input type="text" placeholder="Last Name" name="lastName" onChange={handleChange} value={stateUser.lastName} />
@@ -50,7 +51,8 @@ const Editform = ({user, onEdit}) => {
     {
         return null;
     }
-    
 }
+
+
 
     export default Editform;

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
 
-const Userform = ({onCreate}) => {              
+const UserForm = ({user, onCreate, onEdit}) => {              
     const [stateUser, setStateUser] = useState(
         {
         userName:"",
@@ -22,8 +22,20 @@ const Userform = ({onCreate}) => {
 
     const handleSubmit = function(event){
         event.preventDefault();
-        onCreate(stateUser);
+        if(stateUser.id){
+            onEdit(stateUser)
+        } else {
+            onCreate(stateUser);
+        }
+        
     }
+
+    useEffect(()=>{
+        if(user){
+          let copiedUser = {...user}
+          setStateUser(copiedUser)
+      }
+        }, [user])
 
     return (
         <div className="user-form panel in-from-top">
@@ -42,4 +54,4 @@ const Userform = ({onCreate}) => {
        )
     }
 
-    export default Userform;
+    export default UserForm;
