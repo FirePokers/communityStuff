@@ -34,6 +34,7 @@ const BookingCalendar = ({asset}) => {
             <Calendar
                 localizer={localizer}
                 selectable={true}
+                step={1440}
                 views={['month', 'day', 'agenda']}
                 // onSelectSlot={(slotInfo) => this.onSlotChange(slotInfo)}
                 events={asset.bookings}
