@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
+import '../css/animation.css';
 
 const UserForm = ({user, onCreate, onEdit}) => {              
     const [stateUser, setStateUser] = useState(
@@ -38,7 +39,7 @@ const UserForm = ({user, onCreate, onEdit}) => {
         }, [user])
 
     return (
-        <div className="user-form panel in-from-top">
+        <div className="user-form panel dissolve-appear">
 
         <form onSubmit={handleSubmit}>
             <h2>User Form:</h2>

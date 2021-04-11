@@ -43,7 +43,15 @@ const MainContainer = () => {
    const handleEdit = function(user){
        console.log("edit user", user);
        const request = new Request();           
-       request.patch("/api/users", user)
+       request.patch(`/api/users/${user.id}`, {
+           id: user.id,
+           userName: user.userName,
+           firstName: user.firstName,
+           lastName: user.lastName,
+           email: user.email,
+           memberLevel: user.memberLevel,
+           renewDate: user.renewDate
+       })
        .then(() => window.location = "/users/")
    }
    useEffect(() => {

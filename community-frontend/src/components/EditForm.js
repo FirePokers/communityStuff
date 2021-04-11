@@ -14,9 +14,12 @@ const Editform = ({user, onEdit}) => {
 
     const handleSubmit = function(event){
         event.preventDefault();
-        if(stateUser.id){
-        onEdit(stateUser)
-        } 
+
+        console.log("user to pass up:", stateUser);
+        onEdit(stateUser);
+        // if(stateUser.id){
+        // onEdit(stateUser)
+        // } 
             
         }
     
