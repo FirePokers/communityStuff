@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import AssetList from './AssetList';
+import TagLabel from './TagLabel';
 import '../css/inventory.css';
 
 
@@ -8,6 +9,7 @@ const Inventory = ({allAssets, allTags}) => {
     const [assets, setAssets] = useState([]);
     const [searchState, setSearchState] = useState("");
     const [filterTags, setFilterTags] = useState([]);
+    const [tagLabels, setTagLabels] = useState([]);
 
     useEffect(() => {
         setAssets(allAssets);
@@ -18,7 +20,8 @@ const Inventory = ({allAssets, allTags}) => {
     }, [allTags])
 
     useEffect(() => {
-        filterAssets(searchState)
+        filterAssets(searchState);
+        createLabels();
     },[filterTags]);
 
 
@@ -45,9 +48,6 @@ const Inventory = ({allAssets, allTags}) => {
            });
 
            setAssets([...newList]);
-        
-
-
     }
 
 
@@ -63,9 +63,6 @@ const Inventory = ({allAssets, allTags}) => {
             });
 
             return namesFilter.some(nameTag => namesAsset.includes(nameTag));
-    //         const result = namesFilter.some(nameTag => namesAsset.includes(nameTag));
-    //         console.log("has passed tagtest:", result);
-    //         return result;
     } 
 
     const handleTag = (event) => {
@@ -89,12 +86,34 @@ const Inventory = ({allAssets, allTags}) => {
             }
             
         }
+    };
+
+    const handleTagDelete = (tag) => {
+
+        console.log("tag deleted:", tag);
+    }
+
+    const createLabels = () => {
+
+        if(filterTags.length === allTags.length)
+        {
+            setTagLabels([]);
+        }
+        else
+        {
+            const tagNodes = filterTags.map((element, index) => {
+                return <TagLabel key={index} tag={element} onTagRemove={(tag) => handleTagDelete(tag)} />
+            });
+
+            setTagLabels(tagNodes);
+        }
     }
 
     const tagOptions = allTags.map((tag, index) => {
 
         return <option key={index} value={index}>{tag.tagName}</option>
-    })
+    });
+
 
 
     return (
@@ -118,6 +137,10 @@ const Inventory = ({allAssets, allTags}) => {
                             {tagOptions}
                         </select>
                     </form>
+
+                    <div className="inventory-tag-container">
+                        {tagLabels}
+                    </div>
                     
                 </div>
                <AssetList assets={assets}/> 
