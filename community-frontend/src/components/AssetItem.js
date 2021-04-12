@@ -5,7 +5,7 @@ import '../css/assetItem.css'
 import '../css/panel.css'
 ;
 
-const AssetItem = ({asset, tags}) => {
+const AssetItem = ({asset, tags, user, onCreate}) => {
 
     if (!asset){
         return <p>Loading...</p>
@@ -25,7 +25,7 @@ const AssetItem = ({asset, tags}) => {
 
             </div>
 
-            <Calendar asset={asset}/>
+            <Calendar asset={asset} user={user} onCreate={onCreate}/>
             
 
 

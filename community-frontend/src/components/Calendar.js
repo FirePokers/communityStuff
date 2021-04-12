@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {Calendar, Views, momentLocalizer} from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
@@ -7,41 +7,63 @@ import '../css/assetItem.css';
 
 const localizer = momentLocalizer(moment);
 
-const BookingCalendar = ({asset}) => {
+const BookingCalendar = ({asset, user, onCreate}) => {
 
-    // const bookingEvents = ({asset}) => {
-    //     const eventNodes = asset.bookings.map((booking) => {
-    //         return {
-    //             startDate: new Date (booking.startDate),
-    //             endDate: new Date(booking.endDate),
-    //             title: "booking",
-    //             allDay: true
-    //         }
-    // })
+    const [stateBooking, setStateBooking] = useState(null);
+    const [stateUser, setStateUser] = useState(null);
+
+    const onSlotChange = function(slotInfo){
+        // if(!Calendar.events){
+        window.alert("this is a new booking");
+        console.log("what is this bloody slot info", slotInfo);
+        let newBooking = {
+        startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
+        endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
+        asset: asset,
+        user: stateUser
+        }
+        setStateBooking(newBooking);
+    // } else {
+    //     return window.alert("aw shan times - already booked out")
     // }
+    }
 
-    // const bookings = [
-    //             {
-    //                 startDate: "2021-04-08T17:24:48.316+00:00",
-    //                 endDate: "2021-04-09T17:24:48.316+00:00",
-    //                 id: "booking"
-    //             }
-    //         ]
+    useEffect(() => {
+        setStateUser(user)   
+    }, [user]);
 
+    useEffect(() => {
+        if(stateBooking){
+            console.log("what is happening here", stateBooking.asset);
+        onCreate(stateBooking);
+        }
+    }, [stateBooking]);
 
+    const handleSelectEvent = event => {
+        window.alert(
+            `your booking deets ` +
+            event.startDate +
+            event.endDate +
+            event.id
+        )
+    }
+
+    if(user){
     return (
         <div className='booking-calendar-container panel'>
             <Calendar
                 localizer={localizer}
-                selectable={true}
                 step={1440}
-                views={['month', 'day', 'agenda']}
-                // onSelectSlot={(slotInfo) => this.onSlotChange(slotInfo)}
+                views={['month','day','agenda']}
+                selectable="ignoreEvents"
+                action="click"
+                onSelectSlot={(slotInfo) => onSlotChange(slotInfo)}
                 events={asset.bookings}
                 startAccessor="startDate"
                 endAccessor="endDate"
-                titleAccessor="id"
-                allDayAccessor={true}
+                titleAccessor="${asset.name}"
+                allDayAccessor="true"
+                onSelectEvent={handleSelectEvent}
                 style={{
                     height: 300,
                     width: 300
@@ -49,6 +71,9 @@ const BookingCalendar = ({asset}) => {
             />
         </div>
         )
+    } else {
+        return null
+    };
 }
 
 export default BookingCalendar;

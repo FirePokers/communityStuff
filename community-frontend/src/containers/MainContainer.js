@@ -10,6 +10,7 @@ import UserLogIn from '../components/UserLogIn';
 import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
+import BookingConfirm from '../components/BookingConfirm';
 
 
 const MainContainer = () => {
@@ -34,7 +35,7 @@ const MainContainer = () => {
             setAllUsers(data[0]);
             setAllAssets(data[1]);
             setAllTags(data[2]);
-            setRouteNodes(getRoutes(data[1]));
+            setRouteNodes(getRoutes(data[1], data[0]));
         })
         
 
@@ -74,6 +75,14 @@ const MainContainer = () => {
        setCurrentUser(user[0])
        console.log("logging in: ", user);
    }
+   const handleBookingPost = function(booking){
+       const request = new Request();
+       request.post("/api/bookings", booking)
+       .then(() => window.location = `/bookingconfirm`)
+}
+
+
+
    useEffect(() => {
        requestAll();
    }, []);
@@ -86,16 +95,16 @@ const MainContainer = () => {
    },[currentUser])
 
 
-    
-   const getRoutes = (assets) => {
+    const getRoutes = (assets, user) => {
         const newNodes = assets.map((asset, index) => {
-            return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags}/>} />
+            return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={user} onCreate={handleBookingPost}/>} />
         });
         return [...newNodes];
    };
 
 
-   if(routeNodes && allUsers)
+   
+   if(routeNodes)
    {
         return (
 
@@ -110,6 +119,8 @@ const MainContainer = () => {
                <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
 
                 <Route exact path="/" render={(probs) =>{return <UserLogIn users={allUsers} handleUserLogin={handleUserLogin}/>}}/>
+               <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
+
                 {routeNodes}
                </Switch>
                {/* or navbar in here */}
