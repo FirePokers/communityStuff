@@ -1,5 +1,6 @@
 package com.codeclan.example.community_stuff.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -17,9 +18,16 @@ public class User {
 
     @Column(name="user_name")
     private String userName;
+    @Column(name="first_name")
+    private String firstName;
+    @Column(name="last_name")
+    private String lastName;
+    @Column(name="email")
+    private String email;
     @Column(name="member_level")
     private int memberLevel;
     @Column(name="renew_date")
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date renewDate;
     @JsonIgnoreProperties({"user"})
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -29,10 +37,13 @@ public class User {
     public User() {
     }
 
-    public User(String userName, int memberLevel, Date renewDate) {
+    public User(String userName, String firstName, String lastName, String email, int memberLevel) {
         this.userName = userName;
         this.memberLevel = memberLevel;
-        this.renewDate = renewDate;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.renewDate = new Date("2022/12/31");
         this.bookings = new ArrayList<>();
     }
 
