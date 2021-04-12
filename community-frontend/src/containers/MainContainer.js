@@ -9,6 +9,7 @@ import NavBar from '../components/NavBar';
 import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
+import BookingConfirm from '../components/BookingConfirm';
 
 
 const MainContainer = () => {
@@ -32,7 +33,7 @@ const MainContainer = () => {
             setCurrentUser(data[0]);
             setAllAssets(data[1]);
             setAllTags(data[2]);
-            setRouteNodes(getRoutes(data[1]));
+            setRouteNodes(getRoutes(data[1], data[0]));
         })
         
 
@@ -73,15 +74,15 @@ const MainContainer = () => {
    }, []);
 
 
-    
-   const getRoutes = (assets) => {
+    const getRoutes = (assets, user) => {
         const newNodes = assets.map((asset, index) => {
-            return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={currentUser} onCreate={handleBookingPost}/>} />
+            return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={user} onCreate={handleBookingPost}/>} />
         });
         return [...newNodes];
    };
 
 
+   
    if(routeNodes)
    {
         return (
@@ -95,6 +96,8 @@ const MainContainer = () => {
                 <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
 
                <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit}/>}}/>
+
+               <Route exact path = "bookingconfirm" render={() => <BookingConfirm />} />
 
                 {routeNodes}
                </Switch>

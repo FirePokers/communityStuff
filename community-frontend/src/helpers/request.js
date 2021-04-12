@@ -13,6 +13,7 @@ class Request {
     }
 
     post(url, payload){
+      console.log("BOOKING PAYLOAD:", payload);
       return fetch(url, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
