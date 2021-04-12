@@ -13,7 +13,9 @@ const BookingCalendar = ({asset, user, onCreate}) => {
     const [stateUser, setStateUser] = useState(null);
 
     const onSlotChange = function(slotInfo){
+        // if(!Calendar.events){
         window.alert("this is a new booking");
+        console.log("what is this bloody slot info", slotInfo);
         let newBooking = {
         startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
         endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
@@ -21,6 +23,9 @@ const BookingCalendar = ({asset, user, onCreate}) => {
         user: stateUser
         }
         setStateBooking(newBooking);
+    // } else {
+    //     return window.alert("aw shan times - already booked out")
+    // }
     }
 
     useEffect(() => {
@@ -49,15 +54,15 @@ const BookingCalendar = ({asset, user, onCreate}) => {
             <Calendar
                 localizer={localizer}
                 step={1440}
-                views={['month', 'day','agenda']}
-                selectable
+                views={['month','day','agenda']}
+                selectable="ignoreEvents"
                 action="click"
                 onSelectSlot={(slotInfo) => onSlotChange(slotInfo)}
                 events={asset.bookings}
                 startAccessor="startDate"
                 endAccessor="endDate"
                 titleAccessor="${asset.name}"
-                // allDayAccessor={true}
+                allDayAccessor="true"
                 onSelectEvent={handleSelectEvent}
                 style={{
                     height: 300,

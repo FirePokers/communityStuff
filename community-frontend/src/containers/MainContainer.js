@@ -64,7 +64,7 @@ const MainContainer = () => {
    const handleBookingPost = function(booking){
        const request = new Request();
        request.post("/api/bookings", booking)
-       .then(() => window.location = `/inventory`)
+       .then(() => window.location = `/bookingconfirm`)
 }
 
 
@@ -97,7 +97,7 @@ const MainContainer = () => {
 
                <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit}/>}}/>
 
-               <Route exact path = "bookingconfirm" render={() => <BookingConfirm />} />
+               <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
 
                 {routeNodes}
                </Switch>
