@@ -12,10 +12,28 @@ const BookingCalendar = ({asset, user, onCreate}) => {
     const [stateBooking, setStateBooking] = useState(null);
     const [stateUser, setStateUser] = useState(null);
 
+    const formattedBookings = asset.bookings.map((booking) => {
+        console.log("booking", booking);
+        const copiedBooking = { ...booking };
+        const splitStartDate = booking.startDate.split("/");
+        const splitEndDate = booking.endDate.split("/");
+        copiedBooking.startDate = new Date(
+          splitStartDate[0],
+          splitStartDate[1]-1,
+          splitStartDate[2]
+        );
+        copiedBooking.endDate = new Date(
+          splitEndDate[0],
+          splitEndDate[1]-1,
+          splitEndDate[2]
+        );
+        console.log("copy", copiedBooking);
+        return copiedBooking;
+      });
+
     const onSlotChange = function(slotInfo){
-        // if(!Calendar.events){
+        // if(asset.bookings){
         window.alert("this is a new booking");
-        console.log("what is this bloody slot info", slotInfo);
         let newBooking = {
         startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
         endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
@@ -41,8 +59,8 @@ const BookingCalendar = ({asset, user, onCreate}) => {
 
     const handleSelectEvent = event => {
         window.alert(
-            `your booking deets ` +
-            event.startDate +
+            `Your Booking Details `+
+             event.startDate +
             event.endDate +
             event.id
         )
@@ -58,10 +76,10 @@ const BookingCalendar = ({asset, user, onCreate}) => {
                 selectable="ignoreEvents"
                 action="click"
                 onSelectSlot={(slotInfo) => onSlotChange(slotInfo)}
-                events={asset.bookings}
+                events={formattedBookings}
                 startAccessor="startDate"
                 endAccessor="endDate"
-                titleAccessor="${asset.name}"
+                titleAccessor="id"
                 allDayAccessor="true"
                 onSelectEvent={handleSelectEvent}
                 style={{
