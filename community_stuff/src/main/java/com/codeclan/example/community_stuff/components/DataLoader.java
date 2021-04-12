@@ -35,9 +35,9 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        User user1 = new User("Sam Cooke", 1, new Date(1649376000));
+        User user1 = new User("SamCooke", "Sam", "Cooke", "s.cooke@example", 1);
         userRepository.save(user1);
-        User user2 = new User("Otis Redding", 1, new Date(1649376000));
+        User user2 = new User("ORedding", "Otis", "Redding", "big-otis@jazz.com", 1);
         userRepository.save(user2);
 
         Tag tag1 = new Tag("hand tool");
