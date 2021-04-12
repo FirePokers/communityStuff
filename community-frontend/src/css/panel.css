@@ -13,4 +13,14 @@
     border-radius: 4px;
     height: 1.3em;
     margin: 5px;
+    width: 80%;
+}
+
+.panel-dropdown {
+
+    width: 60%;
+    height: 1.5em;
+    font-size: large;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
 }

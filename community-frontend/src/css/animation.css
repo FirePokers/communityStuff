@@ -61,6 +61,26 @@
     }
 }
 
+@keyframes white-red-black {
+    0% {
+        color: white;
+    }
+
+    25% {
+        color:red
+    }
+
+    50% {
+        color: orangered;
+    }
+
+
+    100% {
+        color: black;
+    }
+    
+}
+
 .in-from-right {
     position: relative;
     animation-name: from_right;
@@ -104,5 +124,12 @@
 .dissolve-appear3{
     animation-name: dissolve_in;
     animation-duration: 1.6s;
+    animation-fill-mode: forwards;
+}
+
+.cool-appear1 {
+
+    animation-name: white-red-black;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
