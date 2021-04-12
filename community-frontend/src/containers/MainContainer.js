@@ -58,6 +58,15 @@ const MainContainer = () => {
        })
        .then(() => window.location = "/users/")
    }
+
+   const handleBookingPost = function(booking){
+       const request = new Request();
+       request.post("/api/bookings", booking)
+       .then(() => window.location = `/inventory`)
+}
+
+
+
    useEffect(() => {
        requestAll();
    }, []);
@@ -66,7 +75,7 @@ const MainContainer = () => {
     
    const getRoutes = (assets) => {
         const newNodes = assets.map((asset, index) => {
-            return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags}/>} />
+            return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={currentUser} onCreate={handleBookingPost}/>} />
         });
         return [...newNodes];
    };

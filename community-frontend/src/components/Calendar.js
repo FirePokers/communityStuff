@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {Calendar, Views, momentLocalizer} from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
@@ -7,18 +7,40 @@ import '../css/assetItem.css';
 
 const localizer = momentLocalizer(moment);
 
-const BookingCalendar = ({asset}) => {
+const BookingCalendar = ({asset, user, onCreate}) => {
 
-    // const bookingEvents = ({asset}) => {
-    //     const eventNodes = asset.bookings.map((booking) => {
-    //         return {
-    //             startDate: new Date (booking.startDate),
-    //             endDate: new Date(booking.endDate),
-    //             title: "booking",
-    //             allDay: true
-    //         }
-    // })
-    // }
+    const [stateBooking, setStateBooking] = useState(
+        {
+        startDate: "",
+        endDate: "",
+        asset: asset,
+        user: user
+        }
+    )
+
+    const onSlotChange = function(slotInfo, asset, user){
+        window.alert("this is a new booking");
+        let newBooking = {
+        startDate: moment(slotInfo.start.toLocaleString()).format("yyyy-MM-dd"),
+        endDate: moment(slotInfo.end.toLocaleString()).format("yyyy-MM-dd"),
+        asset: {asset},
+        user: {user}
+        }
+        console.log("what shows here", stateBooking);
+        setStateBooking(newBooking);
+        console.log("booking set to state:", stateBooking);
+        onCreate(stateBooking);
+    }
+
+    const handleSelectEvent = event => {
+        window.alert(
+            `your booking deets ` +
+            event.startDate +
+            event.endDate +
+            event.id
+        )
+    }
+
 
     // const bookings = [
     //             {
@@ -33,15 +55,16 @@ const BookingCalendar = ({asset}) => {
         <div className='booking-calendar-container panel'>
             <Calendar
                 localizer={localizer}
-                selectable={true}
+                selectable
                 step={1440}
-                views={['month', 'day', 'agenda']}
-                // onSelectSlot={(slotInfo) => this.onSlotChange(slotInfo)}
+                views={['month', 'day','agenda']}
+                onSelectSlot={(slotInfo, asset, user) => onSlotChange(slotInfo, asset, user)}
                 events={asset.bookings}
                 startAccessor="startDate"
                 endAccessor="endDate"
-                titleAccessor="id"
-                allDayAccessor={true}
+                titleAccessor="userName"
+                // allDayAccessor={true}
+                onSelectEvent={handleSelectEvent}
                 style={{
                     height: 300,
                     width: 300
