@@ -1,6 +1,6 @@
 .navbar-container {
 
-    display: flex;
+    display: inline-block;
     flex-direction: row;
     justify-content:space-around;
 
@@ -39,3 +39,16 @@
 .navbar a:hover {
     margin-bottom: 7px;
 }
+
+.logo {
+
+padding: none;
+display: inline-block;
+width: 250px;
+height: 250px;
+text-indent: none;
+white-space: nowrap;
+/* margin:0 auto; */
+float: left;
+}
+

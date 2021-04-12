@@ -50,13 +50,13 @@ const UserLogIn = ({handleUserLogin}) => {
 
     return (
         <>
-        <h2>`User log in :)`</h2>
+        
 
-        <form className="inventory-top-row panel" onSubmit={onUserSelect}>
-            <input type="text" name="searchUser" id="searchUser" value={stateName} onChange={handleChange}/>
+        <form className="log-in panel" onSubmit={onUserSelect}>
+            <input class='input-fields' type="text" placeholder='Username:' name="searchUser" id="searchUser" value={stateName} onChange={handleChange}/>
 
 
-            <input type="submit" value="Confirm User" />
+            <input class='confirm-button' type="submit" value="Confirm User" />
         </form>
 
 
