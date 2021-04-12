@@ -111,7 +111,6 @@ const MainContainer = () => {
 
  
             const newNodes = assets.map((asset, index) => {
-                console.log("route for :", asset.name)
                 return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={user} onCreate={handleBookingPost}/>} />
             });
             return [...newNodes];
@@ -123,7 +122,6 @@ const MainContainer = () => {
    if(routeNodes && allAssets)
    {
 
-        console.log("Routes:", routeNodes)
         return (
 
             <div className="main-container">

@@ -5,50 +5,12 @@ import moment from 'moment';
 import AssetItem from './AssetItem';
 import '../css/assetItem.css';
 
-const localizer = momentLocalizer(moment);
 
 const BookingCalendar = ({asset, user, onCreate}) => {
 
     const [stateBooking, setStateBooking] = useState(null);
-    const [stateUser, setStateUser] = useState(null);
 
-    const formattedBookings = asset.bookings.map((booking) => {
-        console.log("booking", booking);
-        const copiedBooking = { ...booking };
-        const splitStartDate = booking.startDate.split("/");
-        const splitEndDate = booking.endDate.split("/");
-        copiedBooking.startDate = new Date(
-          splitStartDate[0],
-          splitStartDate[1]-1,
-          splitStartDate[2]
-        );
-        copiedBooking.endDate = new Date(
-          splitEndDate[0],
-          splitEndDate[1]-1,
-          splitEndDate[2]
-        );
-        console.log("copy", copiedBooking);
-        return copiedBooking;
-      });
-
-    const onSlotChange = function(slotInfo){
-        // if(asset.bookings){
-        window.alert("this is a new booking");
-        let newBooking = {
-        startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
-        endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
-        asset: asset,
-        user: stateUser
-        }
-        setStateBooking(newBooking);
-    // } else {
-    //     return window.alert("aw shan times - already booked out")
-    // }
-    }
-
-    useEffect(() => {
-        setStateUser(user)   
-    }, [user]);
+    const localizer = momentLocalizer(moment);
 
     useEffect(() => {
         if(stateBooking){
@@ -57,41 +19,87 @@ const BookingCalendar = ({asset, user, onCreate}) => {
         }
     }, [stateBooking]);
 
-    const handleSelectEvent = event => {
-        window.alert(
-            `Your Booking Details `+
-             event.startDate +
-            event.endDate +
-            event.id
-        )
+    const existingBookings = asset.bookings.map((booking, index) => {
+
+        return {
+            // title: `${booking.startDate}`,
+            title: "Booked",
+            start: booking.startDate,
+            end: booking.endDate,
+            allDay: true,
+            resource: asset.name
+        }
+
+
+    })
+
+
+    const onSlotChange = function(slotInfo){
+
+        const newBookingStart = Date.parse(moment(slotInfo.start).format("YYYY/MM/DD"));
+        const newBookingEnd = Date.parse(moment(slotInfo.end).format("YYYY/MM/DD"));
+
+
+        let noOverlap = asset.bookings.every((booking) => {
+
+            console.log("proposed start:", newBookingStart);
+            console.log("proposed end:", newBookingEnd);
+
+            let existingBookStart = Date.parse(moment(booking.startDate).format("YYYY/MM/DD"));
+            let existingBookEnd = Date.parse(moment(booking.endDate).format("YYYY/MM/DD"));
+
+            console.log("existing Start", existingBookStart);
+            console.log("existing End", existingBookEnd);
+
+            return newBookingStart > existingBookEnd || newBookingEnd < existingBookStart;
+        })
+
+        
+        // console.log("format in booking: ", moment(asset.bookings[0].startDate).format("YYYY/MM/DD"));
+        // console.log("format from calendar: ", moment(slotInfo.start).format("YYYY/MM/DD"));
+
+
+        if(noOverlap){
+            window.alert("this is a new booking");
+            let newBooking = {
+            startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
+            endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
+            asset: asset,
+            user: user
+            }
+            setStateBooking(newBooking);
+        } else 
+        {
+            return window.alert("aw shan times - already booked out")
+        }
     }
 
     if(user){
+
     return (
-        <div className='booking-calendar-container panel'>
-            <Calendar
+        
+            <div className='booking-calendar-container panel'>
+                <Calendar
                 localizer={localizer}
-                step={1440}
-                views={['month','day','agenda']}
-                selectable="ignoreEvents"
+                events={existingBookings}
+                startAccessor="start"
+                endAccessor="end"
                 action="click"
+                selectable="ignoreEvents"
                 onSelectSlot={(slotInfo) => onSlotChange(slotInfo)}
-                events={formattedBookings}
-                startAccessor="startDate"
-                endAccessor="endDate"
-                titleAccessor="id"
-                allDayAccessor="true"
-                onSelectEvent={handleSelectEvent}
-                style={{
-                    height: 300,
-                    width: 300
-                }}
-            />
-        </div>
-        )
-    } else {
-        return null
-    };
+                />
+
+            </div>
+
+
+        );
+    }
+    else
+    {
+        return null;
+    }
+
+
 }
 
 export default BookingCalendar;
