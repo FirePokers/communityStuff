@@ -15,7 +15,7 @@ const UserLogIn = ({handleUserLogin}) => {
         {
             // console.log("logged in: ", loggedUser);
             handleUserLogin(loggedUser)
-            // window.location ='/inventory'
+            window.location ='/inventory'
         }
     }, [loggedUser])
 
