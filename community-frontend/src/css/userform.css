@@ -21,17 +21,17 @@
  
 }
 
-input[type=text] {
+/* input[type=text] {
   padding: 15px;
   margin: 10px;
   margin-left: 60px;
   border:10; 
-  /* border-bottom:1px solid #eee;  */
+  border-bottom:1px solid #eee; 
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius: 100px;
   
   
-}
+} */
 
 button {
   appearance: none;
