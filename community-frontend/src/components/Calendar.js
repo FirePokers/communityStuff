@@ -21,8 +21,8 @@ const BookingCalendar = ({asset, user, onCreate}) => {
     const onSlotChange = function(slotInfo, asset, user){
         window.alert("this is a new booking");
         let newBooking = {
-        startDate: moment(slotInfo.start.toLocaleString()).format("yyyy-MM-dd"),
-        endDate: moment(slotInfo.end.toLocaleString()).format("yyyy-MM-dd"),
+        startDate: moment(slotInfo.start.toLocaleString()).format("yyyy/MM/dd"),
+        endDate: moment(slotInfo.end.toLocaleString()).format("yyyy/MM/dd"),
         asset: {asset},
         user: {user}
         }
