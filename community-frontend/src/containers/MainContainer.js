@@ -71,11 +71,19 @@ const MainContainer = () => {
    }
 
    const handleUserLogin = (user) => {
+       setCurrentUser(user[0])
        console.log("logging in: ", user);
    }
    useEffect(() => {
        requestAll();
    }, []);
+
+   useEffect(() => {
+    if(currentUser)
+    {
+        console.log("LOGGED IN!!!", currentUser);
+    }
+   },[currentUser])
 
 
     
