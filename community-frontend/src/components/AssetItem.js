@@ -5,11 +5,16 @@ import '../css/assetItem.css'
 import '../css/panel.css'
 ;
 
-const AssetItem = ({asset, tags, user, onCreate}) => {
+const AssetItem = ({asset, tags, onCreate}) => {
+
+    const sessionStorage = window.sessionStorage;
+    const user = window.sessionStorage.getItem("user");
 
     if (!asset){
         return <p>Loading...</p>
     }
+
+
 
 
 
