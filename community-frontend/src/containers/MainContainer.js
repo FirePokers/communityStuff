@@ -6,6 +6,7 @@ import UserForm from "../components/UserForm";
 import EditForm from "../components/EditForm";
 import AssetItem from '../components/AssetItem';
 import NavBar from '../components/NavBar';
+import UserLogIn from '../components/UserLogIn';
 import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
@@ -13,6 +14,7 @@ import '../css/animation.css';
 
 const MainContainer = () => {
 
+   const [allUsers, setAllUsers] = useState(null);
    const [currentUser, setCurrentUser] = useState(null);
    const [allAssets, setAllAssets] = useState([]);
    const [allTags, setAllTags] = useState([]);
@@ -23,13 +25,13 @@ const MainContainer = () => {
    const requestAll = function(){
         
         const request = new Request();
-        const userPromise = request.get('/api/users/1')
+        const userPromise = request.get('/api/users')
         const assetPromise = request.get('/api/assets')
         const tagPromise = request.get('/api/tags')
 
         Promise.all([userPromise, assetPromise, tagPromise])
         .then((data) => {
-            setCurrentUser(data[0]);
+            setAllUsers(data[0]);
             setAllAssets(data[1]);
             setAllTags(data[2]);
             setRouteNodes(getRoutes(data[1]));
@@ -67,6 +69,10 @@ const MainContainer = () => {
        })
        .then(() => window.location = "/users/")
    }
+
+   const handleUserLogin = (user) => {
+       console.log("logging in: ", user);
+   }
    useEffect(() => {
        requestAll();
    }, []);
@@ -81,7 +87,7 @@ const MainContainer = () => {
    };
 
 
-   if(routeNodes)
+   if(routeNodes && allUsers)
    {
         return (
 
@@ -95,6 +101,7 @@ const MainContainer = () => {
 
                <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
 
+                <Route exact path="/" render={(probs) =>{return <UserLogIn users={allUsers} handleUserLogin={handleUserLogin}/>}}/>
                 {routeNodes}
                </Switch>
                {/* or navbar in here */}
