@@ -4,7 +4,18 @@ import '../css/navbar.css';
 
 const NavBar = () => {
 
+
+
     const location = useLocation();
+    const sessionStorage = window.sessionStorage;
+    let user = sessionStorage.getItem("user");
+
+    const onLogOut = () => {
+        
+
+    }
+
+
 
     console.log("current route:", location);
 
@@ -14,7 +25,8 @@ const NavBar = () => {
 
             <nav className="navbar panel in-from-top">
                 <Link to="/inventory">Our Inventory</Link>
-            
+
+
                 <span className="navbar-right-cluster">
                 <Link to="/">Log in</Link>
                 <Link to="/users/new">Register</Link>
