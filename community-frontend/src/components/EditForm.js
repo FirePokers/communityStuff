@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
 
-const Editform = ({user, onEdit}) => {              
-    const [stateUser, setStateUser] = useState(user);
+const Editform = ({onEdit}) => {       
+    
+    const sessionStorage = window.sessionStorage;
+    let user = JSON.parse(window.sessionStorage.getItem("user"));
+
+    const [stateUser, setStateUser] = useState(user[0]);
 
 
     const handleChange = function(event){
