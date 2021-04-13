@@ -6,7 +6,7 @@ const Editform = ({onEdit}) => {
     const sessionStorage = window.sessionStorage;
     let user = JSON.parse(window.sessionStorage.getItem("user"));
 
-    const [stateUser, setStateUser] = useState(user[0]);
+    const [stateUser, setStateUser] = useState(user);
 
 
     const handleChange = function(event){
@@ -20,6 +20,8 @@ const Editform = ({onEdit}) => {
         event.preventDefault();
 
         console.log("user to pass up:", stateUser);
+        sessionStorage.setItem("user", JSON.stringify(stateUser));
+
         onEdit(stateUser);
         // if(stateUser.id){
         // onEdit(stateUser)
@@ -28,12 +30,12 @@ const Editform = ({onEdit}) => {
         }
     
 
-    useEffect(()=>{
-        if(user){
-          let copiedUser = {...user}
-          setStateUser(copiedUser)
-      }
-        }, [user])
+    // useEffect(()=>{
+    //     if(user){
+    //       let copiedUser = {...user}
+    //       setStateUser(copiedUser)
+    //   }
+    //     }, [user])
 
     if(stateUser)
     {
