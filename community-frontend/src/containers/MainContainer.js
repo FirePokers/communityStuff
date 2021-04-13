@@ -15,31 +15,43 @@ import BookingConfirm from '../components/BookingConfirm';
 
 const MainContainer = () => {
 
-   const [allUsers, setAllUsers] = useState(null);
    const [currentUser, setCurrentUser] = useState(null);
-   const [allAssets, setAllAssets] = useState([]);
+   const [allAssets, setAllAssets] = useState(null);
    const [allTags, setAllTags] = useState([]);
    const [routeNodes, setRouteNodes] = useState(null);
-   const [chosenAsset, setChosenAsset] = useState(null);
    const [Dates, setDates] = useState([]);
 
    const requestAll = function(){
         
         const request = new Request();
-        const userPromise = request.get('/api/users')
         const assetPromise = request.get('/api/assets')
         const tagPromise = request.get('/api/tags')
 
-        Promise.all([userPromise, assetPromise, tagPromise])
+        Promise.all([assetPromise, tagPromise])
         .then((data) => {
-            setAllUsers(data[0]);
-            setAllAssets(data[1]);
-            setAllTags(data[2]);
-            setRouteNodes(getRoutes(data[1], data[0]));
+            setAllAssets(data[0]);
+            setAllTags(data[1]);
+            setRouteNodes(getRoutes(data[0], currentUser));
         })
         
 
    }
+
+   useEffect(() => {
+    if(currentUser != null)
+    {
+        setRouteNodes(getRoutes(allAssets, currentUser));
+    }
+
+   },[currentUser])
+   
+   useEffect(() => {
+
+    if(allAssets != null)
+    {
+       setRouteNodes(getRoutes(allAssets, currentUser));
+    }
+   },[allAssets])
 
    const handleDelete = function(user){
        const request = new Request();
@@ -96,16 +108,20 @@ const MainContainer = () => {
 
 
     const getRoutes = (assets, user) => {
-        const newNodes = assets.map((asset, index) => {
-            return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={user} onCreate={handleBookingPost}/>} />
-        });
-        return [...newNodes];
+
+ 
+            const newNodes = assets.map((asset, index) => {
+                return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={user} onCreate={handleBookingPost}/>} />
+            });
+            return [...newNodes];
+
    };
 
 
    
-   if(routeNodes)
+   if(routeNodes && allAssets)
    {
+
         return (
 
             <div className="main-container">
@@ -113,17 +129,12 @@ const MainContainer = () => {
                 <NavBar />
                 <Switch>
                 <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
-
                 <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
-
-               <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
-
-                <Route exact path="/" render={(probs) =>{return <UserLogIn users={allUsers} handleUserLogin={handleUserLogin}/>}}/>
-               <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
-
+                <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
+                <Route exact path="/" render={(probs) =>{return <UserLogIn handleUserLogin={handleUserLogin}/>}}/>
+                <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
                 {routeNodes}
                </Switch>
-               {/* or navbar in here */}
             </Router>
             </div>
         );

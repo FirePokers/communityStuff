@@ -5,11 +5,17 @@ import '../css/assetItem.css'
 import '../css/panel.css'
 ;
 
-const AssetItem = ({asset, tags, user, onCreate}) => {
+const AssetItem = ({asset, tags, onCreate}) => {
+
+    const sessionStorage = window.sessionStorage;
+    let user = JSON.parse(window.sessionStorage.getItem("user"));
+
 
     if (!asset){
         return <p>Loading...</p>
     }
+
+
 
 
 
@@ -25,7 +31,7 @@ const AssetItem = ({asset, tags, user, onCreate}) => {
 
             </div>
 
-            <Calendar asset={asset} user={user} onCreate={onCreate}/>
+            <Calendar asset={asset} user={user ? user[0] : null} onCreate={onCreate}/>
             
 
 

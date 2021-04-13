@@ -9,13 +9,17 @@ const UserLogIn = ({handleUserLogin}) => {
     const [stateName, setStateName] = useState("");
     const [loggedUser, setLoggedUser] = useState(null);
 
+    const sessionStorage = window.sessionStorage;
+
     useEffect(() => {
 
         if(loggedUser)
         {
             // console.log("logged in: ", loggedUser);
-            handleUserLogin(loggedUser)
-            // window.location ='/inventory'
+            handleUserLogin(loggedUser);
+
+            sessionStorage.setItem("user", JSON.stringify(loggedUser));
+            window.location ='/inventory'
         }
     }, [loggedUser])
 
