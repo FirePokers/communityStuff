@@ -39,6 +39,8 @@ const UserForm = ({user, onCreate, onEdit}) => {
         }, [user])
 
     return (
+
+        <div className="inventory-centre-row">
         <div className="user-form panel in-from-top">
 
         <form onSubmit={handleSubmit}>
@@ -51,6 +53,7 @@ const UserForm = ({user, onCreate, onEdit}) => {
             <button className="create-user-button" type="submit">Create User</button>
         </form>
        
+        </div>
         </div>
        )
     }

@@ -54,18 +54,18 @@ const UserLogIn = ({handleUserLogin}) => {
 
     return (
         <>
-        
-        <div className="log-in-container">
-        <form className="log-in panel" onSubmit={onUserSelect}>
-            <input className='log-in-container' type="text" placeholder='Username:' name="searchUser" id="searchUser" value={stateName} onChange={handleChange}/>
+        <div className="inventory-centre-row"></div>
+        {/* <div className="log-in-container"> */}
+        <form className="log-in panel log-in-container" onSubmit={onUserSelect}>
+            <input  type="text" placeholder='Username:' name="searchUser" id="searchUser" value={stateName} onChange={handleChange}/>
 
 
             <input className='confirm-button' type="submit" value="Confirm User" />
         </form>
-        </div>
+        
 
 
-
+         <div/>
         </>
     )
 

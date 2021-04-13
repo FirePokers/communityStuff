@@ -45,6 +45,8 @@ const Editform = ({onEdit, onDelete}) => {
     if(stateUser)
     {
         return (
+
+            <div className="inventory-centre-row">
            
             <form onSubmit={handleSubmit}>
             <div className="edit-form panel in-from-top">
@@ -64,7 +66,7 @@ const Editform = ({onEdit, onDelete}) => {
             </div>
             
             </form>
-    
+            </div>
        )
     }
     else
