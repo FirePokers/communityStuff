@@ -26,7 +26,7 @@ const NavBar = () => {
             
                 <span className="navbar-right-cluster">
                 <Link to="/">Log in</Link>
-                <Link to="/users/new">Register</Link>
+                <Link to="/usersnew">Register</Link>
                 </span>
                 
             </nav>

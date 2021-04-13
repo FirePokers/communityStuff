@@ -8,3 +8,14 @@
     width: 100vw;
     min-width: 100vw;
 }
+
+.booking-confirm {
+
+    
+    max-width: fit-content;
+    align-self: center;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
