@@ -11,6 +11,7 @@ import '../css/main.css';
 import '../css/panel.css';
 import '../css/animation.css';
 import BookingConfirm from '../components/BookingConfirm';
+import UserBookings from '../components/UserBookings';
 
 
 const MainContainer = () => {
@@ -133,6 +134,7 @@ const MainContainer = () => {
                 <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
                 <Route exact path="/" render={(probs) =>{return <UserLogIn handleUserLogin={handleUserLogin}/>}}/>
                 <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
+                <Route exact Path = "/users/bookings/test" render={() => <UserBookings user={currentUser}/>} />
                 {routeNodes}
                </Switch>
             </Router>
