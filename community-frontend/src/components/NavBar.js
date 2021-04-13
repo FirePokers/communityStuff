@@ -18,7 +18,7 @@ const NavBar = () => {
     {
         leftLinks.push(<Link to="/">View Bookings</Link>);
 
-        rightLinks.push(<Link onClick={handleLogoutClick}>Edit Details</Link>);
+        rightLinks.push(<Link to="/usersedit">Edit Details</Link>);
         rightLinks.push(<Link onClick={handleLogoutClick}>Log Out</Link>);
     }
 

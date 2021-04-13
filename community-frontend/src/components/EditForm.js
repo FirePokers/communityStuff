@@ -40,6 +40,8 @@ const Editform = ({onEdit}) => {
     if(stateUser)
     {
         return (
+
+            
             <div className="edit-form panel in-from-top">
 
             <form onSubmit={handleSubmit}>

@@ -80,7 +80,7 @@ const MainContainer = () => {
            memberLevel: user.memberLevel,
            renewDate: user.renewDate
        })
-       .then(() => window.location = "/users/")
+       .then(() => window.location = "/inventory")
    }
 
    const handleUserLogin = (user) => {
