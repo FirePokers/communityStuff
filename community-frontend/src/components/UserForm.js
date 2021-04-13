@@ -43,12 +43,12 @@ const UserForm = ({user, onCreate, onEdit}) => {
 
         <form onSubmit={handleSubmit}>
             <h2>Sign Up</h2>
-            <input class='input-fields' type="text" placeholder="User Name" name="userName" onChange={handleChange} value={stateUser.userName} />
-            <input class='input-fields' type="text" placeholder="First Name" name="firstName" onChange={handleChange} value={stateUser.firstName} />
-            <input class='input-fields' type="text" placeholder="Last Name" name="lastName" onChange={handleChange} value={stateUser.lastName} />
-            <input class='input-fields' type="text" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
+            <input class='sign-up-input-fields' type="text" placeholder="User Name" name="userName" onChange={handleChange} value={stateUser.userName} />
+            <input class='sign-up-input-fields' type="text" placeholder="First Name" name="firstName" onChange={handleChange} value={stateUser.firstName} />
+            <input class='sign-up-input-fields' type="text" placeholder="Last Name" name="lastName" onChange={handleChange} value={stateUser.lastName} />
+            <input class='sign-up-input-fields' type="text" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
 
-            <button type="submit">Create User</button>
+            <button className="create-user-button" type="submit">Create User</button>
         </form>
        
         </div>

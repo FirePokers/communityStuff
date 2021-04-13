@@ -24,22 +24,37 @@
 }
 
 /* user-form input[type=text] {    */
-  .input-fields {
+  .sign-up-input-fields {
   padding: 15px;
-  margin: 10px;
+  margin: 10px; 
   margin-left: 60px;
-  border:10; 
+  border: 10px; 
    border-bottom:1px solid #eee;  
    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius: 18px; 
+  width: auto;
   
 } 
 
-button {
+.log-in-input-fields {
+  padding: 15px;
+  margin: 10px; 
+  /* margin-left: 60px; */
+  border: 10px; 
+   border-bottom:1px solid #eee;  
+   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius: 18px; 
+  width: auto;
+  /* max-width: max-content; */
+  
+  
+} 
+
+.create-user-button {
   appearance: none;
-  -webkit-appearance: none;
-  padding:10px;
-  border:none;
+  -webkit-appearance: none; 
+   padding:10px; 
+   border:none;
   background-color:#3F51B5;
   color:#fff;
   font-weight:600;
@@ -60,12 +75,12 @@ h2 {
 
 .edit-form {
 
-  /* display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
  
   width: 70vw;
-  min-width: 70vw; */
+  min-width: 70vw;
 
   padding: 15px;
   margin: 10px;
