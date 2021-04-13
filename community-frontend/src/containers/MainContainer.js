@@ -127,7 +127,7 @@ const MainContainer = () => {
             <div className="main-container">
             <Router>
                 <NavBar />
-                <div className="inventory-centre-row">
+                
                 <Switch>
                 <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
                 <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
@@ -136,7 +136,7 @@ const MainContainer = () => {
                 <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
                 {routeNodes}
                </Switch>
-               </div>
+               
             </Router>
             </div>
         );

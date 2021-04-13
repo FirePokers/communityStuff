@@ -136,7 +136,9 @@ const Inventory = ({allAssets, allTags}) => {
         <>
             <div className="inventory-top-row">
             </div>
-            
+
+            <div className="inventory-centre-row">
+
                 <div className="inventory-left-container">
                 <div className="inventory-searchbox panel in-from-right">
                     <form>
@@ -149,7 +151,7 @@ const Inventory = ({allAssets, allTags}) => {
                     <h1>Filter by Tag</h1>
 
                     <form>
-                        <select name="tagsSelect" onChange={handleTag} defaultValue="select-tag" className="panel-dropdown">
+                        <select className="tagsSelect" onChange={handleTag} defaultValue="select-tag" className="panel-dropdown">
                             <option value='searchAll'>Search All Tags</option>
                             {tagOptions}
                         </select>
@@ -162,7 +164,7 @@ const Inventory = ({allAssets, allTags}) => {
                 </div>
                 </div>
                <AssetList assets={assets}/> 
-
+               </div>
             
         </>
     )
