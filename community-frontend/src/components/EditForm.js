@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
 
-const Editform = ({onEdit}) => {       
+const Editform = ({onEdit, onDelete}) => {       
     
     const sessionStorage = window.sessionStorage;
     let user = JSON.parse(window.sessionStorage.getItem("user"));
@@ -15,6 +15,10 @@ const Editform = ({onEdit}) => {
         copiedUser[propertyName] = event.target.value;
         setStateUser(copiedUser)
     }
+
+    // const handleDelete = () => {
+    //     onDelete(stateUser)
+    // }
 
     const handleSubmit = function(event){
         event.preventDefault();
@@ -48,6 +52,8 @@ const Editform = ({onEdit}) => {
                 <input type="email" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
 
                 <button type="submit">Edit</button>
+
+                <button type="button" onClick={onDelete} >Delete Account </button>
             </form>
         
             </div>
