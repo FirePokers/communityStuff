@@ -36,7 +36,7 @@
   
 } 
 
-.log-in-input-fields {
+/* .log-in-input-fields {
   padding: 15px;
   margin: 10px; 
   margin-left: 60px;
@@ -46,9 +46,39 @@
   border-radius: 18px; 
   width: auto;
   max-width: max-content;
-  
-  
+}  */
+
+/* .log-in { */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  min-width: 0vw;
+  /* height: 60px; */
+  /* margin-left: 300px;
+  margin-right: 300px; */
+  /* max-width: 40%; 
+  align-items: center; */ 
+/* }  */
+
+.log-in-container {
+
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 100px; */
+  /* margin-left: 50%;
+  margin-right: 50%;  */
+  /* border: 10px;  */
+   /* border-bottom:1px solid #eee;  
+   box-shadow:0 0 15px 4px rgba(0,0,0,0.06); */
+  border-radius: 18px; 
 } 
+
+.log-in {
+  padding: 20px;
+}
 
 .create-user-button {
   appearance: none;
@@ -70,6 +100,8 @@
   border: none;
   margin-left: 90px;
 }
+
+
 
 
 
@@ -101,11 +133,7 @@
   
 }
 
-.log-in-container {
 
-    /* margin-left: 50%;
-    margin-right: 50%; */
-}
 
 .edit-input {
 
@@ -126,6 +154,26 @@
 
 }
 
+
+.confirm-button {   appearance: none;
+  -webkit-appearance: none;
+  padding:10px;
+  border: none;
+  background-color:#3F51B5;
+  color:#fff;
+  font-weight:600;
+  border-radius:10px;
+  /* width:50%; */
+  margin: 10px;
+  margin-left: 20%; 
+  /* margin-right: 50%;  */
+  /* max-width: 80%;  */
+  text-align: center;
+  
+
+ }
+
+ 
 .edit-delete-button {
   appearance: none;
   -webkit-appearance: none; 

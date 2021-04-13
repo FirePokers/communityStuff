@@ -148,11 +148,11 @@ const Inventory = ({allAssets, allTags}) => {
 
                 </div>
                 <div className="inventory-leftpanel panel in-from-left">
-                    <h1>Filter by Tag</h1>
+                    <h1 className='h1-filter-heading'>Filter by Tag</h1>
 
                     <form>
                         <select className="tagsSelect" onChange={handleTag} defaultValue="select-tag" className="panel-dropdown">
-                            <option value='searchAll'>Search All Tags</option>
+                            <option value='searchAll'>Select</option>
                             {tagOptions}
                         </select>
                     </form>

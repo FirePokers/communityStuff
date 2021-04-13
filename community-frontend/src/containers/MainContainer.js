@@ -130,8 +130,8 @@ const MainContainer = () => {
                 
                 <Switch>
                 <Route path="/inventory" render={()=> <Inventory allAssets={allAssets} allTags={allTags}/>}/>
-                <Route exact path = "/users/new" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
-                <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
+                <Route exact path = "/usersnew" render={(probs) =>{return <UserForm onCreate={handlePost}/>}}/>
+                <Route exact path = "/usersedit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
                 <Route exact path="/" render={(probs) =>{return <UserLogIn handleUserLogin={handleUserLogin}/>}}/>
                 <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
                 {routeNodes}

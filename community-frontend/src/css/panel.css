@@ -9,18 +9,19 @@
 
 .panel-text {
     background-color: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 4px;
+    /* border: none; */
+    border-radius: 20px;
     height: 1.3em;
     margin: 5px;
     width: 80%;
+    border: solid black 1px;
 }
 
 .panel-dropdown {
 
-    width: 60%;
+    width: 90%;
     height: 1.5em;
     font-size: large;
     background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 4px;
+    border-radius: 20px;
 }
