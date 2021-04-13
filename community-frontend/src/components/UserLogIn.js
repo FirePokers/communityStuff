@@ -55,13 +55,14 @@ const UserLogIn = ({handleUserLogin}) => {
     return (
         <>
         
-
+        <div className="log-in-container">
         <form className="log-in panel" onSubmit={onUserSelect}>
             <input className='log-in-input-fields' type="text" placeholder='Username:' name="searchUser" id="searchUser" value={stateName} onChange={handleChange}/>
 
 
             <input className='confirm-button' type="submit" value="Confirm User" />
         </form>
+        </div>
 
 
 

@@ -154,7 +154,8 @@
     width: 40vw;
     min-width: 0vw;
     /* height: 60px; */
-    margin-left: 300px;
-    margin-right: 300px;
+    /* margin-left: 300px;
+    margin-right: 300px; */
     max-width: 40%; 
+    align-items: center;
  } 

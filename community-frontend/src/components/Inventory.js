@@ -136,7 +136,7 @@ const Inventory = ({allAssets, allTags}) => {
         <>
             <div className="inventory-top-row">
             </div>
-            <div className="inventory-centre-row">
+            
                 <div className="inventory-left-container">
                 <div className="inventory-searchbox panel in-from-right">
                     <form>
@@ -163,7 +163,7 @@ const Inventory = ({allAssets, allTags}) => {
                 </div>
                <AssetList assets={assets}/> 
 
-            </div>
+            
         </>
     )
 
