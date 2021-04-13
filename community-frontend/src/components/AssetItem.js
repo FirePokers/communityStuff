@@ -26,7 +26,7 @@ const AssetItem = ({asset, tags, onCreate}) => {
                 
                 <img src={asset.imageUrl} alt={asset.name} className="inventory-image"/>
                 <h3>{asset.name}</h3>
-                <p><strong>Description:</strong>{asset.description}</p>
+                <p><strong>Description:  </strong>{asset.description}</p>
                 <p><strong>Certification required:</strong>{" "} {asset.certificationDetail}</p>   
 
             </div>
