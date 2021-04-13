@@ -22,9 +22,7 @@ const BookingCalendar = ({asset, user, onCreate}) => {
     // const handleSelectEvent = event => {
     //     window.alert(
     //         `Your booking Details\nDate: ` +
-    //         moment(event.startDate).format("DD/MM/YY") +
-    //         `\nBooking Reference: ` +
-    //         event.id
+    //         moment(event.startDate).format("DD/MM/YY")
     //     )
     // }
 
@@ -93,7 +91,9 @@ const BookingCalendar = ({asset, user, onCreate}) => {
                 startAccessor="start"
                 endAccessor="end"
                 action="click"
+                views={['month']}
                 selectable="ignoreEvents"
+                style={{padding: 10}}
                 onSelectSlot={(slotInfo) => onSlotChange(slotInfo)}
                 />
 
