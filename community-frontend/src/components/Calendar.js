@@ -19,10 +19,16 @@ const BookingCalendar = ({asset, user, onCreate}) => {
         }
     }, [stateBooking]);
 
+    // const handleSelectEvent = event => {
+    //     window.alert(
+    //         `Your booking Details\nDate: ` +
+    //         moment(event.startDate).format("DD/MM/YY")
+    //     )
+    // }
+
     const existingBookings = asset.bookings.map((booking, index) => {
 
         return {
-            // title: `${booking.startDate}`,
             title: "Booked",
             start: booking.startDate,
             end: booking.endDate,
@@ -85,7 +91,9 @@ const BookingCalendar = ({asset, user, onCreate}) => {
                 startAccessor="start"
                 endAccessor="end"
                 action="click"
+                views={['month']}
                 selectable="ignoreEvents"
+                style={{padding: 10}}
                 onSelectSlot={(slotInfo) => onSlotChange(slotInfo)}
                 />
 
