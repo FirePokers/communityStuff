@@ -47,12 +47,7 @@ const NavBar = () => {
                     {leftLinks}
                 </span>
                 <span className="navbar-right-cluster">
-<<<<<<< HEAD
-                <Link to="/">Log in</Link>
-                <Link to="/usersnew">Register</Link>
-=======
                     {rightLinks}
->>>>>>> develop
                 </span>
                 
             </nav>
