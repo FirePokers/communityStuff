@@ -45,6 +45,12 @@ const Editform = ({onEdit, onDelete}) => {
     if(stateUser)
     {
         return (
+<<<<<<< HEAD
+=======
+
+            
+            <div className="edit-form panel in-from-top">
+>>>>>>> develop
 
             <div className="inventory-centre-row">
            
