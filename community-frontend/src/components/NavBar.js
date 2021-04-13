@@ -3,6 +3,7 @@ import {Link, useLocation} from 'react-router-dom';
 import '../css/navbar.css';
 
 
+
 const NavBar = () => {
 
     const location = useLocation();

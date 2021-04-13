@@ -42,7 +42,7 @@ const UserForm = ({user, onCreate, onEdit}) => {
         <div className="user-form panel in-from-top">
 
         <form onSubmit={handleSubmit}>
-            <h2>Sign Up</h2>
+            <h2 className="sign-up-h2">Sign Up</h2>
             <input class='sign-up-input-fields' type="text" placeholder="User Name" name="userName" onChange={handleChange} value={stateUser.userName} />
             <input class='sign-up-input-fields' type="text" placeholder="First Name" name="firstName" onChange={handleChange} value={stateUser.firstName} />
             <input class='sign-up-input-fields' type="text" placeholder="Last Name" name="lastName" onChange={handleChange} value={stateUser.lastName} />

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
+import '../css/navbar.css';
 
 const Editform = ({onEdit, onDelete}) => {       
     
@@ -42,21 +43,25 @@ const Editform = ({onEdit, onDelete}) => {
     if(stateUser)
     {
         return (
+           
+            <form onSubmit={handleSubmit}>
             <div className="edit-form panel in-from-top">
 
-            <form onSubmit={handleSubmit}>
-                <h2>Edit Form:</h2>
-                <input type="text" placeholder="User Name" name="userName" onChange={handleChange} value={stateUser.userName} />
-                <input type="text" placeholder="First Name" name="firstName" onChange={handleChange} value={stateUser.firstName} />
-                <input type="text" placeholder="Last Name" name="lastName" onChange={handleChange} value={stateUser.lastName} />
-                <input type="email" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
+            
+                
+                 <h2 className="edit details h2">Edit Details</h2>
+                <input className="edit-input" type="text" placeholder="User Name" name="userName" onChange={handleChange} value={stateUser.userName} />
+                <input className="edit-input" type="text" placeholder="First Name" name="firstName" onChange={handleChange} value={stateUser.firstName} />
+                <input className="edit-input" type="text" placeholder="Last Name" name="lastName" onChange={handleChange} value={stateUser.lastName} />
+                <input className="edit-input" type="email" placeholder="Email" name="email" onChange={handleChange} value={stateUser.email} />
 
-                <button type="submit">Edit</button>
+                <button className="edit-delete-button" type="submit">Edit</button>
 
-                <button type="button" onClick={onDelete} >Delete Account </button>
-            </form>
+                <button className="edit-delete-button" type="button" onClick={onDelete} >Delete Account </button>
         
             </div>
+            
+            </form>
     
        )
     }
