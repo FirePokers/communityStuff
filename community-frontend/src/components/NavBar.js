@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import '../css/navbar.css';
 
+
 const NavBar = () => {
 
     const location = useLocation();
@@ -9,8 +10,15 @@ const NavBar = () => {
     console.log("current route:", location);
 
     return (
+        <>
+        
+
+        
         <header className="navbar-container">
-            <img src='/logo192.png' alt="Logo"/>
+
+        <Link className='logo' to="/inventory"> <img src="./cs.png" alt="Logo"/>  </Link>
+
+           
 
             <nav className="navbar panel in-from-top">
                 <Link to="/inventory">Our Inventory</Link>
@@ -21,8 +29,10 @@ const NavBar = () => {
                 </span>
                 
             </nav>
+            
       
         </header>
+        </>
 
     )
 }

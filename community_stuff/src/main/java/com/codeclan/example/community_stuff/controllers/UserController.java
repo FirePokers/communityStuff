@@ -19,7 +19,14 @@ public class UserController {
 
     @GetMapping(value = "/users")
     public ResponseEntity<List<User>> getAllUsers(
+            @RequestParam(name="name", required = false) String name
     ){
+
+        if (name != null)
+        {
+            return new ResponseEntity<List<User>>(userRepository.findUserByUserName(name), HttpStatus.OK);
+
+        }
         return new ResponseEntity<List<User>>(userRepository.findAll(), HttpStatus.OK);
     }
 

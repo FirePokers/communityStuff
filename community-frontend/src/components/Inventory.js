@@ -140,7 +140,7 @@ const Inventory = ({allAssets, allTags}) => {
                 <div className="inventory-left-container">
                 <div className="inventory-searchbox panel in-from-right">
                     <form>
-                    <i className="fas fa-search"></i>
+                    <span className="fas fa-search white-color" ></span>
                         <input type="text" id="searchTerm" name="searchTerm" className="panel-text" value={searchState} onChange={handleChange}/>
                     </form>
 
