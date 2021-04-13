@@ -18,7 +18,7 @@ const UserLogIn = ({handleUserLogin}) => {
             // console.log("logged in: ", loggedUser);
             handleUserLogin(loggedUser);
 
-            sessionStorage.setItem("user", JSON.stringify(loggedUser));
+            sessionStorage.setItem("user", JSON.stringify(loggedUser[0]));
             window.location ='/inventory'
         }
     }, [loggedUser])

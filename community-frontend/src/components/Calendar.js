@@ -11,6 +11,8 @@ const BookingCalendar = ({asset, user, onCreate}) => {
     const [stateBooking, setStateBooking] = useState(null);
 
     const localizer = momentLocalizer(moment);
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
 
     useEffect(() => {
         if(stateBooking){
@@ -46,37 +48,38 @@ const BookingCalendar = ({asset, user, onCreate}) => {
         const newBookingEnd = Date.parse(moment(slotInfo.end).format("YYYY/MM/DD"));
 
 
-        let noOverlap = asset.bookings.every((booking) => {
 
-            console.log("proposed start:", newBookingStart);
-            console.log("proposed end:", newBookingEnd);
-
-            let existingBookStart = Date.parse(moment(booking.startDate).format("YYYY/MM/DD"));
-            let existingBookEnd = Date.parse(moment(booking.endDate).format("YYYY/MM/DD"));
-
-            console.log("existing Start", existingBookStart);
-            console.log("existing End", existingBookEnd);
-
-            return newBookingStart > existingBookEnd || newBookingEnd < existingBookStart;
-        })
-
-        
-        // console.log("format in booking: ", moment(asset.bookings[0].startDate).format("YYYY/MM/DD"));
-        // console.log("format from calendar: ", moment(slotInfo.start).format("YYYY/MM/DD"));
-
-
-        if(noOverlap){
-            window.alert("this is a new booking");
-            let newBooking = {
-            startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
-            endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
-            asset: asset,
-            user: user
-            }
-            setStateBooking(newBooking);
-        } else 
+        if (newBookingStart < today || newBookingEnd < today)
         {
-            return window.alert("aw shan times - already booked out")
+            
+                return window.alert("Booking is in the past. Try booking a day that hasn't already happened.");
+        }
+        else
+        {
+            let noOverlap = asset.bookings.every((booking) => {
+
+
+                let existingBookStart = Date.parse(moment(booking.startDate).format("YYYY/MM/DD"));
+                let existingBookEnd = Date.parse(moment(booking.endDate).format("YYYY/MM/DD"));
+
+
+                return newBookingStart > existingBookEnd || newBookingEnd < existingBookStart;
+            })
+
+
+            if(noOverlap){
+                window.alert("this is a new booking");
+                let newBooking = {
+                startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
+                endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
+                asset: asset,
+                user: user
+                }
+                setStateBooking(newBooking);
+            } else 
+            {
+                return window.alert("aw shan times - already booked out");
+            }
         }
     }
 
