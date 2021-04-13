@@ -19,13 +19,15 @@ const BookingCalendar = ({asset, user, onCreate}) => {
         }
     }, [stateBooking]);
 
-    const handleSelectEvent = event => {
-        window.alert(
-            `Your booking Details\nDate: ` +
-            moment(event.startDate).format("DD/MM/YY") +
-            `\nBooking Reference: ` +
-            event.id
-        )
+    // const handleSelectEvent = event => {
+    //     window.alert(
+    //         `Your booking Details\nDate: ` +
+    //         moment(event.startDate).format("DD/MM/YY") +
+    //         `\nBooking Reference: ` +
+    //         event.id
+    //     )
+    // }
+
     const existingBookings = asset.bookings.map((booking, index) => {
 
         return {
@@ -106,7 +108,6 @@ const BookingCalendar = ({asset, user, onCreate}) => {
     }
 
 
-}
 }
 
 export default BookingCalendar;
