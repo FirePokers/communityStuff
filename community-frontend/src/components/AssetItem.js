@@ -31,7 +31,7 @@ const AssetItem = ({asset, tags, onCreate}) => {
 
             </div>
 
-            <Calendar asset={asset} user={user ? user[0] : null} onCreate={onCreate}/>
+            <Calendar asset={asset} user={user ? user : null} onCreate={onCreate}/>
             
 
 

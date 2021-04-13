@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from "react";
 import '../css/userform.css';
 
-const Editform = ({user, onEdit}) => {              
+const Editform = ({onEdit}) => {       
+    
+    const sessionStorage = window.sessionStorage;
+    let user = JSON.parse(window.sessionStorage.getItem("user"));
+
     const [stateUser, setStateUser] = useState(user);
 
 
@@ -16,6 +20,8 @@ const Editform = ({user, onEdit}) => {
         event.preventDefault();
 
         console.log("user to pass up:", stateUser);
+        sessionStorage.setItem("user", JSON.stringify(stateUser));
+
         onEdit(stateUser);
         // if(stateUser.id){
         // onEdit(stateUser)
@@ -24,12 +30,12 @@ const Editform = ({user, onEdit}) => {
         }
     
 
-    useEffect(()=>{
-        if(user){
-          let copiedUser = {...user}
-          setStateUser(copiedUser)
-      }
-        }, [user])
+    // useEffect(()=>{
+    //     if(user){
+    //       let copiedUser = {...user}
+    //       setStateUser(copiedUser)
+    //   }
+    //     }, [user])
 
     if(stateUser)
     {
