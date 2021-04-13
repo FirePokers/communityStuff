@@ -15,7 +15,6 @@ const UserLogIn = ({handleUserLogin}) => {
 
         if(loggedUser)
         {
-            // console.log("logged in: ", loggedUser);
             handleUserLogin(loggedUser);
 
             sessionStorage.setItem("user", JSON.stringify(loggedUser[0]));
@@ -39,13 +38,6 @@ const UserLogIn = ({handleUserLogin}) => {
            setLoggedUser(data)
        });
 
-
-
-    
-    //    handleUserLogin(request.get(url));
-       
-    
-        // window.location = "/inventory";
     }
 
 
@@ -54,18 +46,19 @@ const UserLogIn = ({handleUserLogin}) => {
 
     return (
         <>
-        <div className="inventory-centre-row"></div>
-        {/* <div className="log-in-container"> */}
-        <form className="log-in panel log-in-container" onSubmit={onUserSelect}>
-            <input  type="text" placeholder='Username:' name="searchUser" id="searchUser" value={stateName} onChange={handleChange}/>
-
-
-            <input className='confirm-button' type="submit" value="Confirm User" />
-        </form>
         
+        <div className="generic-centre-row">
+
+        <form className="log-in panel in-from-left" onSubmit={onUserSelect}>
+            <input className='sign-in-input-fields' type="text" placeholder='Username:' name="searchUser" id="searchUser" value={stateName} onChange={handleChange}/>
 
 
-         <div/>
+            <input className='login-button' type="submit" value="Confirm User" />
+        </form>
+        </div>
+
+
+
         </>
     )
 

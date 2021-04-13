@@ -46,7 +46,7 @@ const Editform = ({onEdit, onDelete}) => {
     {
         return (
 
-            <div className="inventory-centre-row">
+            <div className="generic-centre-row">
            
             <form onSubmit={handleSubmit}>
             <div className="edit-form panel in-from-top">
