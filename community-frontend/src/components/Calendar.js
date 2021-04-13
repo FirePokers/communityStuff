@@ -32,19 +32,19 @@ const BookingCalendar = ({asset, user, onCreate}) => {
       });
 
     const onSlotChange = function(slotInfo){
-        // if(asset.bookings){
-        window.alert("this is a new booking");
-        let newBooking = {
-        startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
-        endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
-        asset: asset,
-        user: stateUser
+            if (window.confirm("Press OK to book!")) {
+                let newBooking = {
+                startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
+                endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
+                title: "booking",
+                asset: asset,
+                user: stateUser
+                }
+                setStateBooking(newBooking);
+            } else {
+                window.txt = "You pressed Cancel!";
+            }
         }
-        setStateBooking(newBooking);
-    // } else {
-    //     return window.alert("aw shan times - already booked out")
-    // }
-    }
 
     useEffect(() => {
         setStateUser(user)   
@@ -59,9 +59,9 @@ const BookingCalendar = ({asset, user, onCreate}) => {
 
     const handleSelectEvent = event => {
         window.alert(
-            `Your Booking Details `+
-             event.startDate +
-            event.endDate +
+            `Your booking Details\nDate: ` +
+            moment(event.startDate).format("DD/MM/YY") +
+            `\nBooking Reference: ` +
             event.id
         )
     }
@@ -72,15 +72,14 @@ const BookingCalendar = ({asset, user, onCreate}) => {
             <Calendar
                 localizer={localizer}
                 step={1440}
-                views={['month','day','agenda']}
+                views={['month', 'day', 'agenda']}
                 selectable="ignoreEvents"
-                action="click"
+                action="select"
                 onSelectSlot={(slotInfo) => onSlotChange(slotInfo)}
                 events={formattedBookings}
                 startAccessor="startDate"
                 endAccessor="endDate"
-                titleAccessor="id"
-                allDayAccessor="true"
+                titleAccessor="title"
                 onSelectEvent={handleSelectEvent}
                 style={{
                     height: 300,
