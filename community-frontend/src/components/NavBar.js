@@ -6,14 +6,34 @@ import '../css/navbar.css';
 const NavBar = () => {
 
     const location = useLocation();
+    const leftLinks = [];
+    const rightLinks = [];
 
-    console.log("current route:", location);
+    const handleLogoutClick = () => {
+        window.sessionStorage.removeItem("user");
+        window.location ='/';
+    }
 
+    if(window.sessionStorage.getItem("user"))
+    {
+        leftLinks.push(<Link to="/">View Bookings</Link>);
+
+        rightLinks.push(<Link onClick={handleLogoutClick}>Edit Details</Link>);
+        rightLinks.push(<Link onClick={handleLogoutClick}>Log Out</Link>);
+    }
+
+    else
+    {
+        rightLinks.push(<Link to="/">Log in</Link>);
+        rightLinks.push(<Link to="/usersnew">Register</Link>);
+    }
+
+    if (location.pathname != "/inventory")
+    {
+        leftLinks.push(<Link to="/inventory">Our Inventory</Link>);
+    }
     return (
         <>
-        
-
-        
         <header className="navbar-container">
 
         <Link className='logo' to="/inventory"> <img src="./cs.png" alt="Logo"/>  </Link>
@@ -21,11 +41,12 @@ const NavBar = () => {
            
 
             <nav className="navbar panel in-from-top">
-                <Link to="/inventory">Our Inventory</Link>
             
+                <span className="navbar-left-cluster">
+                    {leftLinks}
+                </span>
                 <span className="navbar-right-cluster">
-                <Link to="/">Log in</Link>
-                <Link to="/users/new">Register</Link>
+                    {rightLinks}
                 </span>
                 
             </nav>
