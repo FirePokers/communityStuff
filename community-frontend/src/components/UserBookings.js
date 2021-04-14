@@ -1,25 +1,22 @@
 import React from 'react';
 import '../css/panel.css';
 
-const UserBookings = ({user}) => {
+const UserBookings = () => {
 
     const sessionUser = JSON.parse(window.sessionStorage.getItem("user"));
 
-    if (!user){
-        return <p>Loading...</p>
-    }
+    // if (!user){
+    //     return <p>Loading...</p>
+    // }
 
     const bookingList = () => {
         let userBookings = [];
 
-        sessionUser[0].bookings.map(booking => {
+        sessionUser.bookings.map(booking => {
             console.log("can I access session user object")
             userBookings.push(booking)
         });
 
-        user.bookings.map(booking => {
-            userBookings.push(booking)
-        });
 
         return userBookings
 

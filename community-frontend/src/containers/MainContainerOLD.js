@@ -20,7 +20,6 @@ const MainContainer = () => {
    const [allAssets, setAllAssets] = useState(null);
    const [allTags, setAllTags] = useState([]);
    const [routeNodes, setRouteNodes] = useState(null);
-   const [Dates, setDates] = useState([]);
 
    const requestAll = function(){
         
@@ -103,16 +102,18 @@ const MainContainer = () => {
    useEffect(() => {
     if(currentUser)
     {
+        setCurrentUser(currentUser);
         console.log("LOGGED IN!!!", currentUser);
     }
    },[currentUser])
 
 
-    const getRoutes = (assets, user) => {
+    const getRoutes = (assets) => {
 
  
             const newNodes = assets.map((asset, index) => {
-                return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={user} onCreate={handleBookingPost}/>} />
+                console.log("Route for :", asset);
+                return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} onCreate={handleBookingPost}/>} />
             });
             return [...newNodes];
 
@@ -135,7 +136,7 @@ const MainContainer = () => {
                 <Route exact path = "/usersedit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
                 <Route exact path="/" render={(probs) =>{return <UserLogIn handleUserLogin={handleUserLogin}/>}}/>
                 <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
-                <Route exact Path = "/users/bookings/test" render={() => <UserBookings user={currentUser}/>} />
+                <Route exact Path = "/userbookings" render={() => <UserBookings/>} />
                 {routeNodes}
                </Switch>
                
