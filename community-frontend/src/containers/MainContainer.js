@@ -19,7 +19,6 @@ const MainContainer = () => {
    const [allAssets, setAllAssets] = useState(null);
    const [allTags, setAllTags] = useState([]);
    const [routeNodes, setRouteNodes] = useState(null);
-   const [Dates, setDates] = useState([]);
 
    const requestAll = function(){
         
