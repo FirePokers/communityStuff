@@ -23,8 +23,10 @@ const BookingCalendar = ({asset, user, onCreate}) => {
 
     // const handleSelectEvent = event => {
     //     window.alert(
-    //         `Your booking Details\nDate: ` +
-    //         moment(event.startDate).format("DD/MM/YY")
+    //         `your booking deets ` +
+    //         event.startDate +
+    //         event.endDate +
+    //         event.id
     //     )
     // }
 
@@ -68,19 +70,21 @@ const BookingCalendar = ({asset, user, onCreate}) => {
 
 
             if(noOverlap){
-                window.alert("this is a new booking");
-                let newBooking = {
-                startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
-                endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
-                asset: asset,
-                user: user
+                if(window.confirm(`Do you want to make this booking ${user.firstName}?`)) {
+                    // window.alert("this is a new booking");
+                    let newBooking = {
+                    startDate: moment(slotInfo.start).format("YYYY/MM/DD"),
+                    endDate: moment(slotInfo.end).format("YYYY/MM/DD"),
+                    asset: asset,
+                    user: user
+                    }
+                    setStateBooking(newBooking);
                 }
-                setStateBooking(newBooking);
             } else 
             {
                 return window.alert("aw shan times - already booked out");
             }
-        }
+            }
     }
 
     if(user){
@@ -97,6 +101,7 @@ const BookingCalendar = ({asset, user, onCreate}) => {
                 views={['month']}
                 selectable="ignoreEvents"
                 style={{padding: 10}}
+                // onSelectEvent={handleSelectEvent}
                 onSelectSlot={(slotInfo) => onSlotChange(slotInfo)}
                 />
 
