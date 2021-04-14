@@ -85,13 +85,20 @@ const MainContainer = () => {
    }
 
    const handleUserLogin = (user) => {
-       setCurrentUser(user[0])
+       setCurrentUser(user)
        console.log("logging in: ", user);
    }
    const handleBookingPost = function(booking){
        const request = new Request();
        request.post("/api/bookings", booking)
        .then(() => window.location = `/bookingconfirm`)
+}
+    const handleDeleteBooking = function(booking){
+        const request = new Request();
+        const url = (`/api/bookings/${booking.id}`)
+        request.delete(url)
+        .then(() => window.location = "/users/bookings/test")
+    
 }
 
 
@@ -112,7 +119,7 @@ const MainContainer = () => {
 
  
             const newNodes = assets.map((asset, index) => {
-                return <Route path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={user} onCreate={handleBookingPost}/>} />
+                return <Route exact path={`/asset/${asset.id}`} key={index} render={()=> <AssetItem asset={asset} tags={allTags} user={user} onCreate={handleBookingPost}/>} />
             });
             return [...newNodes];
 
@@ -134,7 +141,7 @@ const MainContainer = () => {
                 <Route exact path = "/users/edit" render={(probs) =>{return <EditForm user={currentUser} onEdit={handleEdit} onDelete={handleDelete}/>}}/>
                 <Route exact path="/" render={(probs) =>{return <UserLogIn handleUserLogin={handleUserLogin}/>}}/>
                 <Route exact path = "/bookingconfirm" render={() => <BookingConfirm />} />
-                <Route exact Path = "/users/bookings/test" render={() => <UserBookings user={currentUser}/>} />
+                <Route exact Path = "/users/bookings/test" render={() => <UserBookings user={currentUser} deleteBooking={handleDeleteBooking}/>} />
                 {routeNodes}
                </Switch>
             </Router>
