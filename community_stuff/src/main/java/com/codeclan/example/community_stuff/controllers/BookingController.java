@@ -16,7 +16,7 @@ public class BookingController {
     BookingRepository bookingRepository;
 
     @GetMapping(value = "/bookings")
-    public ResponseEntity<List<Booking>> getAllRaid(
+    public ResponseEntity<List<Booking>> getAllBooking(
             @RequestParam(name = "asset", required = false) Long asset,
             @RequestParam(name = "user", required = false) Long user
     ) {
