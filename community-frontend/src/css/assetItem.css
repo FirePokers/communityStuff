@@ -37,9 +37,12 @@
     text-decoration: none;
 }
 
-.asset-text > img {
-    padding: 5px;
+.asset-item-image {
+
     border-radius: 5%;
+    width: 17vh;
+    height: auto;
+    margin: 1vh 3vh 3vh 3vh;
 }
 
 

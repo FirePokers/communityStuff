@@ -24,21 +24,21 @@ const AssetItem = ({asset, tags, onCreate}) => {
         <div className="generic-centre-row"> 
             <div className="asset-container">
 
-        <div className="asset-left-column"> 
+                <div className="asset-left-column"> 
                 <div className="asset-image-box panel dissolve-appear">
                     <span className="inventory-item-title">{asset.name}</span>
-                    <img src={asset.imageUrl} alt={asset.name} className="inventory-image"/>
+                    <img src={asset.imageUrl} alt={asset.name} className="asset-item-image"/>
                 </div>
             <div className="asset-text panel">
                 <h3>{asset.name}</h3>
-                <p><strong>Description:  </strong>{asset.description}</p>
+                <p><strong>Description:</strong>{asset.description}</p>
                 <p><strong>Certification required:</strong>{" "} {asset.certificationDetail}</p>   
 
             </div>
             </div>
 
             
-            <Calendar asset={asset} user={user ? user : null} onCreate={onCreate}/>
+                <Calendar asset={asset} user={user ? user : null} onCreate={onCreate}/>
         </div>
 
 
