@@ -17,7 +17,7 @@ const NavBar = () => {
 
     if(window.sessionStorage.getItem("user"))
     {
-        leftLinks.push(<Link to="/">View Bookings</Link>);
+        leftLinks.push(<Link to="/userbookings">View Bookings</Link>);
 
         rightLinks.push(<Link to="/usersedit">Edit Details</Link>);
         rightLinks.push(<Link onClick={handleLogoutClick}>Log Out</Link>);
