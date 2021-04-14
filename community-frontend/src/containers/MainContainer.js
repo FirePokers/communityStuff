@@ -80,11 +80,11 @@ const MainContainer = () => {
            memberLevel: user.memberLevel,
            renewDate: user.renewDate
        })
-       .then(() => window.location = "/users/")
+       .then(() => window.location = "/inventory")
    }
 
    const handleUserLogin = (user) => {
-       setCurrentUser(user[0])
+       setCurrentUser(user)
        console.log("logging in: ", user);
    }
    const handleBookingPost = function(booking){

@@ -21,7 +21,7 @@ const AssetItem = ({asset, tags, onCreate}) => {
 
 
     return (
-        <div className='asset-container'>
+        <div className="asset-container">
             <div className="asset-text panel">
                 
                 <img src={asset.imageUrl} alt={asset.name} className="inventory-image"/>
